@@ -35,6 +35,40 @@ $(document).ready(function($) {
     });
 
     //Search page hidden content
+    $('#listing-link').on('click',function(e) {
+        var $message = $('#hidden_listing');
+        if ($message.css('display') != 'block') {
+            $message.show();
+            var firstClick = true;
+            $(document).bind('click.myListEvent', function(e) {
+                if (!firstClick && $(e.target).closest('#hidden_content').length == 0) {
+                    $message.hide();
+                    $(document).unbind('click.myListEvent');
+                }
+                firstClick = false;
+            });
+        }
+        e.preventDefault();
+    });
+
+    $('#home-type-link').on('click',function(e) {
+        var $message = $('#hidden_type');
+        if ($message.css('display') != 'block') {
+            $message.show();
+            var firstClick = true;
+            $(document).bind('click.myTypeEvent', function(e) {
+                if (!firstClick && $(e.target).closest('#hidden_content').length == 0) {
+                    $message.hide();
+                    $(document).unbind('click.myTypeEvent');
+                }
+                firstClick = false;
+            });
+        }
+        e.preventDefault();
+    });
+
+
+    //Search page hidden content
     $('#toggle-link').on('click',function(e) {
         var $message = $('#hidden_content');
         if ($message.css('display') != 'block') {

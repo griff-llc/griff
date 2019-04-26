@@ -30,6 +30,7 @@ Route::get('/property-remove',"BusinessController@propertyRemove");
 Route::get('/property-edit',"BusinessController@propertyEdit");
 
 Route::get('/search',"BusinessController@search");
+Route::post('/search-result',"BusinessController@searchResult");
 
 
 Route::get('/settings',"ManageController@settingsPage")->name('settings');

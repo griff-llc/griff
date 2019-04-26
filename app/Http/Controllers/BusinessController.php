@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Session;
 
+include('simple_html_dom.php');
+
 class BusinessController extends Controller{
 
     public function dashboard(){
@@ -540,8 +542,199 @@ class BusinessController extends Controller{
     public function search(Request $request){
         if(!Session::get('useremail')) return Redirect('/');
         $id = $request->input('property_id');
+        $property = DB::table('property')->where('id',$id)->get();
+        return view('search_result',['property'=>$property[0]]);
+    }
 
-        return view('search_result');
+    public function searchResult(Request $request){
+        if(!Session::get('useremail')) return Redirect('/');
+        $params = array(
+            'spt' => 'homes',
+            'status' => '',
+            'lt' => '110110',
+            'ht' => '011111',
+            'pr' => ',',
+            'mp' => '196,489',
+            'bd' => '4',
+            'ba' => '1.5',
+            'sf' => '12,424',
+            'lot' => '5000',
+            'yr' => '1222,2018',
+            'singlestory' => '0',
+            'hoa' => '0,200',
+            'pho' => '0',
+            'pets' => '0',
+            'parking' => '0',
+            'laundry' => '0',
+            'income-restricted' => '0',
+            'fr-bldg' => '0',
+            'condo-bldg' => '0',
+            'furnished-apartments' => '0',
+            'cheap-apartments' => '0',
+            'studio-apartments' => '0',
+            'pnd' => '0',
+            'red' => '0',
+            'zso' => '0',
+            'att' => '',
+            'days' => 'any',
+            'ds' => 'all',
+            'pmf' => '1',
+            'pf' => '1',
+            'sch' => '100111',
+            'zoom' => '13',
+            'rect' => '-88283601,42500358,-88206697,42538820',
+            'p' => '1',
+            'sort' => 'globalrelevanceex',
+            'search' => 'maplist',
+            'listright' => 'true',
+            'isMapSearch' => 'true',
+            'zoom' => '13',
+        );
+        $by_agent = '0';
+        if ($request->input('by_agent') == 'true'){
+            $by_agent = '1';
+        }
+        $by_owner = '0';
+        if ($request->input('by_owner') == 'true'){
+            $by_owner = '1';
+        }
+
+        $new_construction = '0';
+        if ($request->input('new_construction') == 'true'){
+            $new_construction = '1';
+        }
+        $foreclosures = '0';
+        if ($request->input('foreclosures') == 'true'){
+            $foreclosures = '1';
+        }
+
+        $coming_soon = '0';
+        if ($request->input('coming_soon') == 'true'){
+            $coming_soon = '1';
+        }
+
+        $params['lt'] = $by_agent.$by_owner.$foreclosures.$new_construction.'0'.$coming_soon;
+
+        if ($request->input('foreclosed') == 'true'){
+            $params['pmf'] = '1';
+        }
+        if ($request->input('pre_foreclosure') == 'true'){
+            $params['pf'] = '1';
+        }
+        $make_me_move = '0';
+        if ($request->input('make_me_move') == 'true'){
+            $make_me_move = '1';
+        }
+
+        $for_rent = '0';
+        if ($request->input('for_rent') == 'true'){
+            $for_rent = '1';
+        }
+
+        $recently_sold = '0';
+        if ($request->input('recently_sold') == 'true'){
+            $recently_sold = '1';
+        }
+
+        $open_houses = '0';
+        if ($request->input('open_houses') == 'true'){
+            $open_houses = '1';
+        }
+
+        $pending_under = '0';
+        if ($request->input('pending_under') == 'true'){
+            $pending_under = '1';
+        }
+
+        $params['status'] = '1'.$make_me_move.$recently_sold.'0'.$for_rent.'1';
+
+        $params['lt'] = '11'.$pending_under.'1'.$open_houses.'0';
+
+        $houses = '0';
+        if ($request->input('houses') == 'true'){
+            $houses = '1';
+        }
+        $apartments = '0';
+        if ($request->input('apartments') == 'true'){
+            $apartments = '1';
+        }
+        $condos = '0';
+        if ($request->input('condos') == 'true'){
+            $condos = '1';
+        }
+        $townhomes = '0';
+        if ($request->input('townhomes') == 'true'){
+            $townhomes = '1';
+        }
+        $manufactured = '0';
+        if ($request->input('manufactured') == 'true'){
+            $manufactured = '1';
+        }
+        $lots_land = '0';
+        if ($request->input('lots_land') == 'true'){
+            $lots_land = '1';
+        }
+        $params['ht'] = $houses.$condos.$apartments.$manufactured.$lots_land.$townhomes;
+
+        $params['bd'] = $request->input('beds');
+        $params['ba'] = $request->input('baths');
+        $square_feet_min = '';
+        if($request->has('square_feet_min')){
+            $square_feet_min = $request->input('square_feet_min');
+        }
+        $square_feet_max = '';
+        if($request->has('square_feet_max')){
+            $square_feet_max = $request->input('square_feet_max');
+        }
+        $params['sf'] = $square_feet_min.','.$square_feet_max;
+        $params['lot'] = $request->input('lot_size');
+
+        $year_built_min = '';
+        if($request->has('year_built_min')){
+            $year_built_min = $request->input('year_built_min');
+        }
+        $year_built_max = '';
+        if($request->has('year_built_max')){
+            $year_built_max = $request->input('year_built_max');
+        }
+
+        $params['yr'] = $year_built_min.','.$year_built_max;
+
+        if($request->input('max_hoa') == '0'){
+            $params['hoa'] = '0,';
+        }else{
+            $params['hoa'] = '0,'.$request->input('max_hoa');
+        }
+
+        $params['days'] = $request->input('days_on_zillow');
+        if($request->has('keywords')){
+            $params['att'] = $request->input('keywords');
+
+        }
+        $opts = array(
+            'http'=>array(
+                'method'=>"GET",
+                'header'=>"authority: www.zillow.com\r\n" .
+                    "scheme: https\r\n" .
+                    "accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\r\n" .
+                    "upgrade-insecure-requests: 1\r\n" .
+                    "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36\r\n"
+            )
+        );
+
+        $context = stream_context_create($opts);
+        $url = 'https://www.zillow.com/search/GetResults.htm?'.http_build_query($params);
+
+        $command = 'python scrape.py "'.$url.'"';
+        $answer = shell_exec($command);
+        echo $answer;
+
+//        $file = file_get_html($url,false, $context);
+//
+//        $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+//        fwrite($myfile, $file);
+//        fclose($myfile);
+//        echo $file;
 
     }
 }

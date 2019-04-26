@@ -149,7 +149,7 @@
 											<ul class="submit-features">
 												<li class="col-md-4 col-sm-4 col-xs-6"><div class="checkbox"><label><input type="checkbox" name="by_agent">By Agent</label></div></li>
 												<li class="col-md-4 col-sm-4 col-xs-6"><div class="checkbox"><label><input type="checkbox" name="by_owner">By Owner</label></div></li>
-												<li class="col-md-4 col-sm-4 col-xs-6"><div class="checkbox"><label><input type="checkbox" name="new_construction">New Construction</label></div></li>
+													<li class="col-md-4 col-sm-4 col-xs-6"><div class="checkbox"><label><input type="checkbox" name="new_construction">New Construction</label></div></li>
 												<li class="col-md-4 col-sm-4 col-xs-6"><div class="checkbox"><label><input type="checkbox" name="foreclosures">Foreclosures</label></div></li>
 												<li class="col-md-4 col-sm-4 col-xs-6"><div class="checkbox"><label><input type="checkbox" name="coming_soon">Coming Soon</label></div></li>
 											</ul>
