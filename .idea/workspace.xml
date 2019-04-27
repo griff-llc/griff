@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1f6f2847-5c18-45d2-8a21-4220a1ea4f43" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/resources/views/search_result.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/search_result.blade.php" afterDir="false" />
-    </list>
+    <list default="true" id="1f6f2847-5c18-45d2-8a21-4220a1ea4f43" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,11 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="BusinessController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="BusinessController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/BusinessController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="356">
-              <caret line="575" column="25" lean-forward="true" selection-start-line="575" selection-start-column="25" selection-end-line="575" selection-end-column="25" />
+            <state relative-caret-position="463">
+              <caret line="720" column="27" selection-start-line="720" selection-start-column="27" selection-end-line="720" selection-end-column="27" />
               <folding>
                 <element signature="e#119#133#0#PHP" expanded="true" />
               </folding>
@@ -55,11 +53,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="search_result.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="search_result.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/search_result.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="477" column="50" lean-forward="true" selection-start-line="477" selection-start-column="50" selection-end-line="477" selection-end-column="50" />
+            <state relative-caret-position="369">
+              <caret line="498" column="70" lean-forward="true" selection-start-line="498" selection-start-column="70" selection-end-line="498" selection-end-column="70" />
               <folding>
                 <element signature="n#style#0;n#div#2;n#form#0;n#header#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#section#1;n#div#0;n#div#0;n#div#0;n#div#2;n#form#0;n#header#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -433,12 +431,12 @@
       <workItem from="1555387630547" duration="32839000" />
       <workItem from="1555631364420" duration="38156000" />
       <workItem from="1556028962245" duration="92534000" />
-      <workItem from="1556329612130" duration="19355000" />
+      <workItem from="1556329612130" duration="20053000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="182884000" />
+    <option name="totallyTimeSpent" value="183582000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="0" />
@@ -783,20 +781,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/BusinessController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="575" column="25" lean-forward="true" selection-start-line="575" selection-start-column="25" selection-end-line="575" selection-end-column="25" />
-          <folding>
-            <element signature="e#119#133#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/search_result.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="477" column="50" lean-forward="true" selection-start-line="477" selection-start-column="50" selection-end-line="477" selection-end-column="50" />
+        <state relative-caret-position="369">
+          <caret line="498" column="70" lean-forward="true" selection-start-line="498" selection-start-column="70" selection-end-line="498" selection-end-column="70" />
           <folding>
             <element signature="n#style#0;n#div#2;n#form#0;n#header#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#section#1;n#div#0;n#div#0;n#div#0;n#div#2;n#form#0;n#header#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -828,6 +816,16 @@
             <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/BusinessController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="463">
+          <caret line="720" column="27" selection-start-line="720" selection-start-column="27" selection-end-line="720" selection-end-column="27" />
+          <folding>
+            <element signature="e#119#133#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
