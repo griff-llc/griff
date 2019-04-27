@@ -70,7 +70,6 @@
 				<div class="container">
 					<div class="row">
 						<aside class="pr-summary col-md-4 col-xs-12">
-							<form action="agent_profile.html">
 								<div class="col-lg-7 col-md-6 col-sm-3 col-xs-6 hl-bl">
 									<h2>$1,000</h2>
 									<h5 class="team-color">APARTMENT FOR PRICE</h5>
@@ -117,7 +116,7 @@
 								<div class="row">
 									<div class="col-md-12 col-sm-6 col-xs-12">
 										<span class="ffs-bs">
-											<button type="submit" class="btn btn-large btn-primary">Search</button>
+											<button type="submit" class="btn btn-large btn-primary" onclick="searchResult({{$property[0]->id}})">Search</button>
 										</span>
 										<div class="col-xs-12 fav-block">
 											<div class="bookmark col-xs-6" data-bookmark-state="empty">
@@ -131,7 +130,6 @@
 										</div>
 									</div>
 								</div>
-							</form>
 						</aside>
 						<div class="pr-info col-md-8 col-xs-12">
 							<h2>{{$property[0]->property_name}}</h2>
@@ -432,6 +430,10 @@
  		});
  	});
 
+ 	function searchResult(id) {
+ 	    document.location.href = "/search?property_id="+id;
+
+    }
 	//Google map for property page
 	function initialize() {
 		$.getScript("assets/js/locations.js", function() {

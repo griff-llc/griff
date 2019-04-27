@@ -273,10 +273,10 @@
 										</div><!-- end container -->
 										<div class="col-xs-12 content_2 top-indent">
 											<nav class="site-navigation paging-navigation navbar" id="pagination">
-												<div class="nav-previous" id="prev_page"><a href="#">PREV PAGE</a></div>
+												<div class="nav-previous" id="prev_page"></div>
 												<ul class="pagination pagination-lg" id="page_pagination">
 												</ul>
-												<div class="nav-next" id="next_page"><a href="#">NEXT PAGE</a></div>
+												<div class="nav-next" id="next_page"></div>
 											</nav>
 										</div>
 									</div>	<!-- end wide-2 -->
@@ -509,13 +509,14 @@
                         "<div class=\"bookmark\" data-bookmark-state=\"empty\">\n" +
                         "<span class=\"title-add\">Add to bookmark</span>\n" +
                         "</div>\n" +
+						"<div class=\"compare col-xs-3\" data-compare-state=\"empty\">\n" +
+                        "<span class=\"plus-add\">Add to compare</span>\n" +
+                        "</div>\n"+
                         "</div>\n" +
                         "</div>\n" +
                         "</div>\n" +
                         "</div>\n" +
                         "</div>\n";
-
-                    console.log(data[i]);
 				}
                 result_content.innerHTML = htm;
                 var page_html = "";
@@ -523,20 +524,34 @@
                     if(i == curPage){
                         page_html += "<li><span class=\"active\">"+i+"</span></li>";
 					}else{
-                        page_html += "<li><a href=\"#\">"+i+"</a></li>";
+                        page_html += "<li><a onclick='paginate("+i+")' style='cursor: pointer'>"+i+"</a></li>";
 					}
 				}
+				if(parseInt(curPage) == 1){
+                    document.getElementById("prev_page").innerHTML = "<a style='cursor: pointer'>PREV PAGE</a>";
+				}else{
+                    var temp = parseInt(curPage) - 1;
+                    document.getElementById("prev_page").innerHTML = "<a onclick='paginate("+temp+")' style='cursor: pointer'>PREV PAGE</a>";
+				}
+                if(parseInt(curPage) == numPage){
+                    document.getElementById("next_page").innerHTML = "<a style='cursor: pointer'>NEXT PAGE</a>";
+                }else{
+                    var temp = parseInt(curPage) + 1;
+                    document.getElementById("next_page").innerHTML = "<a onclick='paginate("+temp+")' style='cursor: pointer'>NEXT PAGE</a>";
+                }
+
                 document.getElementById("page_pagination").innerHTML = page_html;
                 document.getElementById("pagination").style.display = "block";
-
-
-
 			}
         );
 
     }
 
 
+    function paginate(page) {
+        search(page);
+
+    }
 
 </script>
 </body>

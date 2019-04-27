@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f6f2847-5c18-45d2-8a21-4220a1ea4f43" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BusinessController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BusinessController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/property_detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/property_detail.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/search_result.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/search_result.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -60,17 +59,8 @@
       <file leaf-file-name="property_page.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/property_page.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2460">
-              <caret line="123" column="69" selection-start-line="123" selection-start-column="69" selection-end-line="123" selection-end-column="69" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="custom.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/assets/js/custom.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1200">
-              <caret line="62" column="17" selection-start-line="62" selection-start-column="17" selection-end-line="62" selection-end-column="17" />
+            <state relative-caret-position="221">
+              <caret line="123" column="77" lean-forward="true" selection-start-line="123" selection-start-column="57" selection-end-line="123" selection-end-column="77" />
             </state>
           </provider>
         </entry>
@@ -78,8 +68,8 @@
       <file leaf-file-name="search_result.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/search_result.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="271" column="105" lean-forward="true" selection-start-line="271" selection-start-column="105" selection-end-line="271" selection-end-column="105" />
+            <state relative-caret-position="342">
+              <caret line="511" column="51" lean-forward="true" selection-start-line="511" selection-start-column="51" selection-end-line="511" selection-end-column="51" />
               <folding>
                 <element signature="e#10961#10967#0#HTML" expanded="true" />
                 <element signature="e#10967#10973#0#HTML" expanded="true" />
@@ -99,8 +89,24 @@
                 <element signature="n#style#0;n#input#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="e#21720#21726#0#HTML" expanded="true" />
                 <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="property_detail.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/property_detail.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-420">
+              <caret line="433" column="54" selection-start-line="433" selection-start-column="54" selection-end-line="433" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -144,9 +150,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>profile</find>
-      <find>property</find>
-      <find>photo</find>
       <find>odal_error_report.html</find>
       <find>toggle-link</find>
       <find>options-overlay</find>
@@ -171,9 +174,12 @@
       <find>beds</find>
       <find>price</find>
       <find>coming_soon</find>
-      <find>search</find>
       <find>search(1)</find>
       <find>loader</find>
+      <find>searchResult</find>
+      <find>seaarch</find>
+      <find>search</find>
+      <find>agent</find>
     </findStrings>
     <dirStrings>
       <dir>C:\xampp\htdocs\reale-state\public\assets\js</dir>
@@ -206,7 +212,6 @@
         <option value="$PROJECT_DIR$/config/filesystems.php" />
         <option value="$PROJECT_DIR$/resources/views/property_page..blade.php" />
         <option value="$PROJECT_DIR$/resources/views/properte.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/property_detail.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/about_us.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/contact_us.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Controller.php" />
@@ -226,6 +231,7 @@
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="F:/themes/Suburb v1.3 - Real Estate HTML Template/suburb-13/suburb/html/search_result.html" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/BusinessController.php" />
+        <option value="$PROJECT_DIR$/resources/views/property_detail.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/search_result.blade.php" />
       </list>
     </option>
@@ -424,12 +430,12 @@
       <workItem from="1555387630547" duration="32839000" />
       <workItem from="1555631364420" duration="38156000" />
       <workItem from="1556028962245" duration="92534000" />
-      <workItem from="1556329612130" duration="10268000" />
+      <workItem from="1556329612130" duration="13602000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="173797000" />
+    <option name="totallyTimeSpent" value="177131000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="0" />
@@ -681,13 +687,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/property_detail.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="592">
-          <caret line="276" column="62" selection-start-line="276" selection-start-column="53" selection-end-line="276" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../scrape.php" />
     <entry file="file://$PROJECT_DIR$/public/assets/css/colors/magenta.css">
       <provider selected="true" editor-type-id="text-editor">
@@ -707,13 +706,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1200">
           <caret line="62" column="17" selection-start-line="62" selection-start-column="17" selection-end-line="62" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/property_page.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2460">
-          <caret line="123" column="69" selection-start-line="123" selection-start-column="69" selection-end-line="123" selection-end-column="69" />
         </state>
       </provider>
     </entry>
@@ -784,10 +776,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/property_page.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="123" column="77" lean-forward="true" selection-start-line="123" selection-start-column="57" selection-end-line="123" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/property_detail.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-420">
+          <caret line="433" column="54" selection-start-line="433" selection-start-column="54" selection-end-line="433" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/search_result.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="271" column="105" lean-forward="true" selection-start-line="271" selection-start-column="105" selection-end-line="271" selection-end-column="105" />
+        <state relative-caret-position="342">
+          <caret line="511" column="51" lean-forward="true" selection-start-line="511" selection-start-column="51" selection-end-line="511" selection-end-column="51" />
           <folding>
             <element signature="e#10961#10967#0#HTML" expanded="true" />
             <element signature="e#10967#10973#0#HTML" expanded="true" />
@@ -807,7 +813,14 @@
             <element signature="n#style#0;n#input#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="e#21720#21726#0#HTML" expanded="true" />
             <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
