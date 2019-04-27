@@ -92,16 +92,25 @@
                             <div class="select-block col-md-2 col-xs-3 last">
                                 <a class="options-button" id="home-type-link">Home Type</a>
                             </div>
-                            <div class="options-overlay col-md-offset-6 col-sm-offset-7 col-sm-3" id="hidden_type" style="display: none; height: 220px;">
+                            <div class="options-overlay col-md-offset-6 col-sm-offset-7 col-sm-3" id="hidden_type" style="display: none; height: 320px;">
                                 <div class="row">
                                     <div class="col-xs-12 top-mrg">
                                         <div class="internal-container features">
                                             <?php
                                             $home_types = json_decode($property->home_types);
                                             ?>
+											<label><input type="checkbox" id="potential_listing"><b>houses</b></label>
+												<section class="block" style="margin-left: 10px">
+													<section>
+														<ul class="submit-features">
+															<li><div class="checkbox"><label onclick="search(1)"><input type="checkbox" name="single_family" id="single_family" @if($home_types->houses == 1) checked @endif>Single Family</label></div></li>
+															<li><div class="checkbox"><label onclick="search(1)"><input type="checkbox" name="multi_family" id="multi_family" @if($home_types->houses == 1) checked @endif>Multi Family</label></div></li>
+														</ul>
+													</section>
+												</section>
+												<hr>
                                             <section>
                                                 <ul class="submit-features">
-                                                    <li><div class="checkbox"><label onclick="search(1)"><input type="checkbox" id="houses" @if($home_types->houses == 1) checked @endif>Houses</label></div></li>
                                                     <li><div class="checkbox"><label onclick="search(1)"><input type="checkbox" id="apartments" @if($home_types->apartments == 1) checked @endif>Apartments</label></div></li>
                                                     <li><div class="checkbox"><label onclick="search(1)"><input type="checkbox" id="condos" @if($home_types->condos == 1) checked @endif>Condos/co-ops</label></div></li>
                                                     <li><div class="checkbox"><label onclick="search(1)"><input type="checkbox" id="townhomes" @if($home_types->townhomes == 1) checked @endif>Townhomes</label></div></li>
@@ -378,7 +387,12 @@
         var open_houses = document.getElementById("open_houses").checked;
         var pending_under = document.getElementById("pending_under").checked;
 
-        var houses = document.getElementById("houses").checked;
+        var single_family= document.getElementById("single_family").checked;
+        var multi_family = document.getElementById("multi_family").checked;
+        var houses = false;
+        if(single_family || multi_family){
+            houses = true;
+		}
         var apartments = document.getElementById("apartments").checked;
         var condos = document.getElementById("condos").checked;
         var townhomes = document.getElementById("townhomes").checked;
@@ -448,6 +462,10 @@
                 if(data == "" || data== null){
                     return;
 				}
+
+                var single_family= document.getElementById("single_family").checked;
+                var multi_family = document.getElementById("multi_family").checked;
+
                 var jsondata = JSON.parse(data);
                 var result_content = document.getElementById("result_content");
                 var curPage = jsondata['curPage'];
@@ -461,6 +479,12 @@
                         status = status.replace("_"," ");
 					}
 					var homeType = row.homeType;
+                    if(single_family == false && homeType == "SINGLE_FAMILY"){
+                        continue;
+					}
+					if(multi_family == false && homeType == "MULTI_FAMILY"){
+                        continue;
+					}
                     if(homeType.valueOf('_') != -1){
                         homeType = homeType.replace("_"," ");
 					}
