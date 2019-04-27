@@ -718,7 +718,7 @@ class BusinessController extends Controller{
 
         $url = 'https://www.zillow.com/search/GetResults.htm?'.http_build_query($params);
 
-        $command = 'python scrape.py "'.$url.'"';
+        $command = 'python3 scrape.py "'.$url.'"';
         $answer = exec($command);
         echo $answer;
 
