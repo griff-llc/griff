@@ -37,7 +37,7 @@
 							<div class="location-map col-sm-4 col-xs-4">
 								<div class="input-group">
 									<input type="text" class="form-control" id="address" name="address" value="@if($property->address){{$property->address}} @elseif($property->neighborhood) {{$property->neighborhood}} @elseif($property->zipcode){{$property->zipcode}} @endif" placeholder="Manhattan, New York">
-									<i class="fa fa-search" onclick="search()"></i>
+									<i class="fa fa-search" onclick="search(1)"></i>
 								</div>
 							</div>
                             <div class="select-block col-md-2 col-xs-3 last">
@@ -52,11 +52,11 @@
                                             <section class="block" style="margin-left: 10px">
                                                 <section>
                                                     <ul class="submit-features">
-                                                        <li><div class="checkbox"><label onclick="search()"><input type="checkbox" name="by_agent" id="by_agent" @if($sales->by_agent == 1) checked @endif>By Agent</label></div></li>
-                                                        <li><div class="checkbox"><label onclick="search()"><input type="checkbox" name="by_owner" id="by_owner" @if($sales->by_owner == 1) checked @endif>By Owner</label></div></li>
-                                                        <li><div class="checkbox"><label onclick="search()"><input type="checkbox" name="new_construction" id="new_construction" @if($sales->new_construction == 1) checked @endif>New Construction</label></div></li>
-                                                        <li><div class="checkbox"><label onclick="search()"><input type="checkbox" name="foreclosures" id="foreclosures" @if($sales->foreclosures == 1) checked @endif>Foreclosures</label></div></li>
-                                                        <li><div class="checkbox"><label onclick="search()"><input type="checkbox" name="coming_soon" id="coming_soon" @if($sales->coming_soon == 1) checked @endif>Coming Soon</label></div></li>
+                                                        <li><div class="checkbox"><label onclick="search(1)"><input type="checkbox" name="by_agent" id="by_agent" @if($sales->by_agent == 1) checked @endif>By Agent</label></div></li>
+                                                        <li><div class="checkbox"><label onclick="search(1)"><input type="checkbox" name="by_owner" id="by_owner" @if($sales->by_owner == 1) checked @endif>By Owner</label></div></li>
+                                                        <li><div class="checkbox"><label onclick="search(1)"><input type="checkbox" name="new_construction" id="new_construction" @if($sales->new_construction == 1) checked @endif>New Construction</label></div></li>
+                                                        <li><div class="checkbox"><label onclick="search(1)"><input type="checkbox" name="foreclosures" id="foreclosures" @if($sales->foreclosures == 1) checked @endif>Foreclosures</label></div></li>
+                                                        <li><div class="checkbox"><label onclick="search(1)"><input type="checkbox" name="coming_soon" id="coming_soon" @if($sales->coming_soon == 1) checked @endif>Coming Soon</label></div></li>
                                                     </ul>
                                                 </section>
                                             </section>
@@ -68,9 +68,9 @@
                                             <section class="block" style="margin-left: 10px">
                                                 <section>
                                                     <ul class="submit-features">
-                                                        <li><div class="checkbox"><label onclick="search()"><input type="checkbox" name="foreclosed" id="foreclosed" @if($potential_listings->foreclosed == 1) checked @endif>Foreclosed</label></div></li>
-                                                        <li><div class="checkbox"><label onclick="search()"><input type="checkbox" name="pre_foreclosure" id="pre_foreclosure" @if($potential_listings->pre_foreclosure == 1) checked @endif>Pre-Foreclosure</label></div></li>
-                                                        <li><div class="checkbox"><label onclick="search()"><input type="checkbox" name="make_me_move" id="make_me_move" @if($potential_listings->make_me_move == 1) checked @endif>Make Me Move</label></div></li>
+                                                        <li><div class="checkbox"><label onclick="search(1)"><input type="checkbox" name="foreclosed" id="foreclosed" @if($potential_listings->foreclosed == 1) checked @endif>Foreclosed</label></div></li>
+                                                        <li><div class="checkbox"><label onclick="search(1)"><input type="checkbox" name="pre_foreclosure" id="pre_foreclosure" @if($potential_listings->pre_foreclosure == 1) checked @endif>Pre-Foreclosure</label></div></li>
+                                                        <li><div class="checkbox"><label onclick="search(1)"><input type="checkbox" name="make_me_move" id="make_me_move" @if($potential_listings->make_me_move == 1) checked @endif>Make Me Move</label></div></li>
                                                     </ul>
                                                 </section>
                                             </section>
@@ -79,11 +79,11 @@
                                             $for_rent = json_decode($property->for_rent);
                                             ?>
 
-                                            <div class="checkbox"><label onclick="search()"><input type="checkbox" id="for_rent" @if($for_rent->for_rent == 1) checked @endif>FOR RENT</label></div>
-                                            <div class="checkbox"><label onclick="search()"><input type="checkbox" id="recently_sold" @if($for_rent->recently_sold == 1) checked @endif>RECENTLY SOLD</label></div>
+                                            <div class="checkbox"><label onclick="search(1)"><input type="checkbox" id="for_rent" @if($for_rent->for_rent == 1) checked @endif>FOR RENT</label></div>
+                                            <div class="checkbox"><label onclick="search(1)"><input type="checkbox" id="recently_sold" @if($for_rent->recently_sold == 1) checked @endif>RECENTLY SOLD</label></div>
                                             <hr>
-                                            <div class="checkbox"><label onclick="search()"><input type="checkbox" id="open_houses" @if($for_rent->open_houses == 1) checked @endif>Open Houses only</label></div>
-                                            <div class="checkbox"><label onclick="search()"><input type="checkbox" id="pending_under" @if($for_rent->pending_under == 1) checked @endif>Pending & Under Contract</label></div>
+                                            <div class="checkbox"><label onclick="search(1)"><input type="checkbox" id="open_houses" @if($for_rent->open_houses == 1) checked @endif>Open Houses only</label></div>
+                                            <div class="checkbox"><label onclick="search(1)"><input type="checkbox" id="pending_under" @if($for_rent->pending_under == 1) checked @endif>Pending & Under Contract</label></div>
                                         </div>
                                     </div>
                                 </div>
@@ -101,12 +101,12 @@
                                             ?>
                                             <section>
                                                 <ul class="submit-features">
-                                                    <li><div class="checkbox"><label onclick="search()"><input type="checkbox" id="houses" @if($home_types->houses == 1) checked @endif>Houses</label></div></li>
-                                                    <li><div class="checkbox"><label onclick="search()"><input type="checkbox" id="apartments" @if($home_types->apartments == 1) checked @endif>Apartments</label></div></li>
-                                                    <li><div class="checkbox"><label onclick="search()"><input type="checkbox" id="condos" @if($home_types->condos == 1) checked @endif>Condos/co-ops</label></div></li>
-                                                    <li><div class="checkbox"><label onclick="search()"><input type="checkbox" id="townhomes" @if($home_types->townhomes == 1) checked @endif>Townhomes</label></div></li>
-                                                    <li><div class="checkbox"><label onclick="search()"><input type="checkbox" id="manufactured" @if($home_types->manufactured == 1) checked @endif>Manufactured</label></div></li>
-                                                    <li><div class="checkbox"><label onclick="search()"><input type="checkbox" id="lots_land" @if($home_types->lots_land == 1) checked @endif>Lots/Land</label></div></li>
+                                                    <li><div class="checkbox"><label onclick="search(1)"><input type="checkbox" id="houses" @if($home_types->houses == 1) checked @endif>Houses</label></div></li>
+                                                    <li><div class="checkbox"><label onclick="search(1)"><input type="checkbox" id="apartments" @if($home_types->apartments == 1) checked @endif>Apartments</label></div></li>
+                                                    <li><div class="checkbox"><label onclick="search(1)"><input type="checkbox" id="condos" @if($home_types->condos == 1) checked @endif>Condos/co-ops</label></div></li>
+                                                    <li><div class="checkbox"><label onclick="search(1)"><input type="checkbox" id="townhomes" @if($home_types->townhomes == 1) checked @endif>Townhomes</label></div></li>
+                                                    <li><div class="checkbox"><label onclick="search(1)"><input type="checkbox" id="manufactured" @if($home_types->manufactured == 1) checked @endif>Manufactured</label></div></li>
+                                                    <li><div class="checkbox"><label onclick="search(1)"><input type="checkbox" id="lots_land" @if($home_types->lots_land == 1) checked @endif>Lots/Land</label></div></li>
                                                 </ul>
                                             </section>
                                         </div>
@@ -117,7 +117,7 @@
 
 
 							<div class="select-block col-sm-2 col-xs-2">
-								<select class="selection" name="beds" id="beds" onchange="search()">
+								<select class="selection" name="beds" id="beds" onchange="search(1)">
 									<option value="0" @if($property->beds == 0) selected @endif>0+ beds</option>
 									<option value="1" @if($property->beds == 1) selected @endif>1+ beds</option>
 									<option value="2" @if($property->beds == 2) selected @endif>2+ beds</option>
@@ -140,7 +140,7 @@
 											<div class="form-group">
                                                 <div>
                                                     <label style="margin-top: 15%">Baths: &nbsp;&nbsp;</label>
-                                                    <select style="margin-bottom:0px" name="baths" id="baths" onchange="search()">
+                                                    <select style="margin-bottom:0px" name="baths" id="baths" onchange="search(1)">
                                                         <option value="0" @if($property->baths == 0) selected @endif>0+</option>
                                                         <option value="1" @if($property->baths == 1) selected @endif>1+</option>
                                                         <option value="1.5" @if($property->baths == 2) selected @endif>1.5+</option>
@@ -156,15 +156,15 @@
                                             <div class="form-group">
                                                 <label style="margin-top: 15%">Square Feet : </label>
                                                 <div style="display: inline-flex">
-                                                    <input type="number" class="form-control" name="square_feet_min" id="square_feet_min" value="{{$property->square_feet_min}}" style="margin-bottom:0px; height: 10px" min="0" placeholder="min" onchange="search()">
+                                                    <input type="number" class="form-control" name="square_feet_min" id="square_feet_min" value="{{$property->square_feet_min}}" style="margin-bottom:0px; height: 10px" min="0" placeholder="min" onchange="search(1)">
                                                     <label>-</label>
-                                                    <input type="number" class="form-control" name="square_feet_max" id="square_feet_max" value="{{$property->square_feet_max}}" style="margin-bottom:0px; height: 10px" min="0" placeholder="max" onchange="search()">
+                                                    <input type="number" class="form-control" name="square_feet_max" id="square_feet_max" value="{{$property->square_feet_max}}" style="margin-bottom:0px; height: 10px" min="0" placeholder="max" onchange="search(1)">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div>
                                                     <label style="margin-top: 15%">Lot Size: &nbsp;&nbsp;</label>
-                                                    <select style="margin-bottom:0px" name="lot_size" id="lot_size" onchange="search()">
+                                                    <select style="margin-bottom:0px" name="lot_size" id="lot_size" onchange="search(1)">
                                                         <option value="0" @if($property->lot_size == 0) selected @endif>Any</option>
                                                         <option value="2000" @if($property->lot_size == 1) selected @endif>2,000+ sqft</option>
                                                         <option value="3000" @if($property->lot_size == 2) selected @endif>3,000+ sqft</option>
@@ -183,9 +183,9 @@
                                             <div class="form-group">
                                                 <label style="margin-top: 15%">Year Built : </label>
                                                 <div style="display: inline-flex">
-                                                    <input type="number" class="form-control" name="year_built_min" id="year_built_min" value="{{$property->year_built_min}}" style="margin-bottom:0px; height: 10px" min="0" placeholder="min" onchange="search()">
+                                                    <input type="number" class="form-control" name="year_built_min" id="year_built_min" value="{{$property->year_built_min}}" style="margin-bottom:0px; height: 10px" min="0" placeholder="min" onchange="search(1)">
                                                     <label>-</label>
-                                                    <input type="number" class="form-control" name="year_built_max" id="year_built_max" value="{{$property->year_built_max}}" style="margin-bottom:0px; height: 10px" min="0" placeholder="max" onchange="search()">
+                                                    <input type="number" class="form-control" name="year_built_max" id="year_built_max" value="{{$property->year_built_max}}" style="margin-bottom:0px; height: 10px" min="0" placeholder="max" onchange="search(1)">
                                                 </div>
                                             </div>
 
@@ -197,7 +197,7 @@
                                             <div class="form-group">
                                                 <div>
                                                     <label style="margin-top: 15%">Max HOA: &nbsp;&nbsp;</label>
-                                                    <select style="margin-bottom:0px" name="max_hoa" id="max_hoa" onchange="search()">
+                                                    <select style="margin-bottom:0px" name="max_hoa" id="max_hoa" onchange="search(1)">
                                                         <option value="0" @if($property->max_hoa == 0) selected @endif>Any</option>
                                                         <option value="100" @if($property->max_hoa == 1) selected @endif>$100/month</option>
                                                         <option value="200" @if($property->max_hoa == 2) selected @endif>$200/month</option>
@@ -210,7 +210,7 @@
                                             <div class="form-group">
                                                 <div>
                                                     <label style="margin-top: 15%">Days on Zillow: &nbsp;&nbsp;</label>
-                                                    <select style="margin-bottom:0px" name="days_on_zillow" id="days_on_zillow" onchange="search()">
+                                                    <select style="margin-bottom:0px" name="days_on_zillow" id="days_on_zillow" onchange="search(1)">
                                                         <option value="any" @if($property->days_on_zillow == 0) selected @endif>Any</option>
                                                         <option value="1" @if($property->days_on_zillow == 1) selected @endif>1 day</option>
                                                         <option value="7" @if($property->days_on_zillow == 2) selected @endif>7 days</option>
@@ -229,7 +229,7 @@
                                                 <textarea class="form-control" name="keywords" id="keywords" placeholder="Garage,pool,waterfront,etc.">{{$property->Keywords}}</textarea>
                                             </div>
                                             <div class="form-group">
-                                                <button type="button" class="btn btn-primary" style="padding: 5px;" id="apply_bt" onclick="search()">Apply</button>
+                                                <button type="button" class="btn btn-primary" style="padding: 5px;" id="apply_bt" onclick="search(1)">Apply</button>
                                             </div>
 
 										</div>
@@ -238,11 +238,6 @@
 								</div><!-- options-overlay -->
                             </form>
 						</header><!-- end header -->
-						<ul class="tab-links col-md-4 col-xs-12">
-							<li class="col-lg-3 col-lg-offset-2 col-md-4 col-xs-4 no-pad active"><a href="#tab1" class="map2"><img src="assets/img/map.png" alt=""/>Map</a></li>
-							<li class="col-lg-3 col-md-4 col-xs-4 no-pad"><a href="#tab2"><img src="assets/img/grid.png" alt=""/>Grig</a></li>
-							<li class="col-lg-3 col-md-4 col-xs-4 bdr-rgh no-pad"><a href="#tab3"><i class="fa fa-th-list"></i>List</a></li>
-						</ul>
 						<!-- tab-links -->
 						<div class="tab-content">
 							<div id="tab1" class="tab" style="display: block;">
@@ -255,18 +250,17 @@
 									<!-- Range slider -->
 									<div class="col-xs-12">
 										<div class="row">
-												<div class="col-md-3 col-sm-4">
+												<div class="col-md-10 col-sm-10">
 													<div class="form-inline">
-														<label class="top-indent">Price Range:</label>
+														<label class="top-indent">Price Range:&nbsp;&nbsp;&nbsp;</label>
+														<input type="number" id="min_price" min="0" style="border-radius: 10px;" value="{{$property->min_price}}">
+														--
+														<input type="number" id="max_price" min="0" style="border-radius: 10px;" value="{{$property->max_price}}">
+														&nbsp;
+														<button class="btn btn-primary" onclick="search(1)" style="padding: 10px;">Apply</button>
 													</div>
 												</div>
-												<div class="col-md-9 col-sm-8">
-													<div class="form-group">
-														<div class="price-range price-range-wrapper">
-															<input class="price-input" id="price_range" type="text" name="price" value="{{$property->min_price}};{{$property->max_price}}">
-														</div>
-													</div>
-												</div>
+											<div class="col-md-2 col-sm-2"></div>
 										</div><!-- row -->
 									</div>	<!-- explore_grid -->
 									<!-- End Range slider -->
@@ -274,713 +268,19 @@
 									<div class="wide-2">
 										<div class="col-xs-12">
 											<div class="row" id="result_content">
-												<div class="col-md-4 col-sm-6 col-xs-6 prop">
-													<div class="wht-cont">
-														<div class="exp-img-2" style="background:url(http://placehold.it/255x200) center;background-size: cover;">
-															<span class="filter"></span>
-															<span class="ffs-bs"><label for="op" class="btn btn-small btn-primary">browse photos</label></span>
-															<div class="overlay">
-																<div class="img-counter">23 Photo</div>
-															</div>
-														</div>
-														<div class="item-title">
-															<h4><a href="property_page.html">AVA High Line 89 - 916 Apartments</a></h4>
-															<p class="team-color">525 W 28th St, New York, NY 10001</p>
-															<div class="col-md-7 col-sm-7 col-xs-7">
-																<p>Studio - 2 bd</p>
-															</div>
-															<div class="col-md-5 col-sm-5 col-xs-5">
-																<p>86 m<span class="rank">2</span></p>
-															</div>
-															<div class="col-md-7 col-sm-7 col-xs-7 lft-brd"></div>
-															<div class="col-md-5 col-sm-5 col-xs-5 lft-brd"></div>
-														</div>
-														<hr>
-														<div class="item-title btm-part">
-															<div class="row">
-																<div class="col-md-8 col-sm-8 col-xs-8">
-																	<p>$5,000,000</p>
-																	<p class="team-color">FOR SALE</p>
-																</div>
-																<div class="col-md-4 col-sm-4 col-xs-4 favorite">
-																	<div class="bookmark" data-bookmark-state="empty">
-																		<span class="title-add">Add to bookmark</span>
-																	</div>
-																	<div class="compare" data-compare-state="empty">
-																		<span class="plus-add">Add to compare</span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
 											</div><!-- end row -->
+											<img id="reading_loader" style="display: none; margin-left: 25%" src="{{asset('assets/img/loader.gif')}}" ></img>
 										</div><!-- end container -->
 										<div class="col-xs-12 content_2 top-indent">
-											<nav class="site-navigation paging-navigation navbar">
-												<div class="nav-previous"><a href="#">PREV PAGE</a></div>
-												<ul class="pagination pagination-lg">
-													<li><a href="#">1</a></li>
-													<li><span class="active">2</span></li>
-													<li><a href="#">3</a></li>
-													<li><span class="nav-dots">...</span></li>
-													<li><a href="#">5</a></li>
+											<nav class="site-navigation paging-navigation navbar" id="pagination">
+												<div class="nav-previous" id="prev_page"><a href="#">PREV PAGE</a></div>
+												<ul class="pagination pagination-lg" id="page_pagination">
 												</ul>
-												<div class="nav-next"><a href="#">NEXT PAGE</a></div>
+												<div class="nav-next" id="next_page"><a href="#">NEXT PAGE</a></div>
 											</nav>
 										</div>
 									</div>	<!-- end wide-2 -->
 								</div>	<!-- content -->
-							</div>
-							<div id="tab2" class="tab">
-								<div class="col-xs-12 content_2">
-									<div class="col-md-10 col-md-offset-1">
-										<!-- Range slider -->
-										<div class="explore_grid">
-											<div class="row">
-												<div class="explore col-xs-12">
-													<h2>Properties for rent</h2>
-													<h5 class="team-color col-sm-offset-3 col-sm-6 col-xs-offset-1 col-xs-10">Lorem Ipsum is simply dummy text of the printing and Lorem Ipsum has been the industry's standard </h5>
-												</div>
-													<div class="col-md-2 col-sm-3">
-														<div class="form-inline">
-															<label class="top-indent">Price Range:</label>
-														</div>
-													</div>
-													<div class="col-md-8 col-sm-7">
-														<div class="form-group">
-															<div class="price-range price-range-wrapper"></div>
-														</div>
-													</div>
-													<div class="select-block no-border pull-right col-sm-2 col-xs-12">
-														<select class="selection">
-															<option>Sort By:</option>
-															<option>Date</option>
-															<option>Price</option>
-															<option>Type</option>
-														</select>
-													</div>	<!-- select-block -->
-											</div><!-- row -->
-										</div>
-										<!-- End Range slider -->
-										<div class="wide-2">
-											<div class="row">
-												<div class="col-md-3 col-sm-3 col-xs-6 prop">
-													<div class="wht-cont">
-														<div class="exp-img-2" style="background:url(http://placehold.it/255x200) center;background-size: cover;">
-															<span class="filter"></span>
-															<span class="ffs-bs"><label for="op" class="btn btn-small btn-primary">browse photos</label></span>
-															<div class="overlay">
-																<div class="img-counter">23 Photo</div>
-															</div>
-														</div>
-														<div class="item-title">
-															<h4><a href="property_page.html">AVA High Line 89 - 916 Apartments</a></h4>
-															<p class="team-color">525 W 28th St, New York, NY 10001</p>
-															<div class="col-md-7 col-sm-7 col-xs-7">
-																<p>Studio - 2 bd</p>
-															</div>
-															<div class="col-md-5 col-sm-5 col-xs-5">
-																<p>86 m<span class="rank">2</span></p>
-															</div>
-															<div class="col-md-7 col-sm-7 col-xs-7 lft-brd"></div>
-															<div class="col-md-5 col-sm-5 col-xs-5 lft-brd"></div>
-														</div>
-														<hr>
-														<div class="item-title btm-part">
-															<div class="row">
-																<div class="col-md-8 col-sm-8 col-xs-8">
-																	<p>$5,000,000</p>
-																	<p class="team-color">FOR SALE</p>
-																</div>
-																<div class="col-md-4 col-sm-4 col-xs-4 favorite">
-																	<div class="bookmark" data-bookmark-state="empty">
-																		<span class="title-add">Add to bookmark</span>
-																	</div>
-																	<div class="compare" data-compare-state="empty">
-																		<span class="plus-add">Add to compare</span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-3 col-sm-3 col-xs-6 prop">
-													<div class="wht-cont">
-														<div class="exp-img-2" style="background:url(http://placehold.it/255x200) center;background-size: cover;">
-															<span class="filter"></span>
-															<span class="ffs-bs"><label for="op" class="btn btn-small btn-primary">browse photos</label></span>
-															<div class="overlay">
-																<div class="img-counter">23 Photo</div>
-															</div>
-														</div>
-														<div class="item-title">
-															<h4><a href="property_page.html">Prism at Park Avenue South Apar</a></h4>
-															<p class="team-color">525 W 28th St, New York, NY 10001</p>
-															<div class="col-md-7 col-sm-7 col-xs-7">
-																<p>Studio - 2 bd</p>
-															</div>
-															<div class="col-md-5 col-sm-5 col-xs-5">
-																<p>86 m<span class="rank">2</span></p>
-															</div>
-															<div class="col-md-7 col-sm-7 col-xs-7 lft-brd"></div>
-															<div class="col-md-5 col-sm-5 col-xs-5 lft-brd"></div>
-														</div>
-														<hr>
-														<div class="item-title btm-part">
-															<div class="row">
-																<div class="col-md-8 col-sm-8 col-xs-8">
-																	<p>$5,000,000</p>
-																	<p class="team-color">FOR SALE</p>
-																</div>
-																<div class="col-md-4 col-sm-4 col-xs-4 favorite">
-																	<div class="bookmark" data-bookmark-state="empty">
-																		<span class="title-add">Add to bookmark</span>
-																	</div>
-																	<div class="compare" data-compare-state="empty">
-																		<span class="plus-add">Add to compare</span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-3 col-sm-3 col-xs-6 prop">
-													<div class="wht-cont">
-														<div class="exp-img-2" style="background:url(http://placehold.it/255x200) center;background-size: cover;">
-															<span class="filter"></span>
-															<span class="ffs-bs"><label for="op" class="btn btn-small btn-primary">browse photos</label></span>
-															<div class="overlay">
-																<div class="img-counter">23 Photo</div>
-															</div>
-														</div>
-														<div class="item-title">
-															<h4><a href="property_page.html">Avalon Morningside Park Apartment</a></h4>
-															<p class="team-color">525 W 28th St, New York, NY 10001</p>
-															<div class="col-md-7 col-sm-7 col-xs-7">
-																<p>Studio - 2 bd</p>
-															</div>
-															<div class="col-md-5 col-sm-5 col-xs-5">
-																<p>86 m<span class="rank">2</span></p>
-															</div>
-															<div class="col-md-7 col-sm-7 col-xs-7 lft-brd"></div>
-															<div class="col-md-5 col-sm-5 col-xs-5 lft-brd"></div>
-														</div>
-														<hr>
-														<div class="item-title btm-part">
-															<div class="row">
-																<div class="col-md-8 col-sm-8 col-xs-8">
-																	<p>$5,000,000</p>
-																	<p class="team-color">FOR SALE</p>
-																</div>
-																<div class="col-md-4 col-sm-4 col-xs-4 favorite">
-																	<div class="bookmark" data-bookmark-state="empty">
-																		<span class="title-add">Add to bookmark</span>
-																	</div>
-																	<div class="compare" data-compare-state="empty">
-																		<span class="plus-add">Add to compare</span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-3 col-sm-3 col-xs-6 prop">
-													<div class="wht-cont">
-														<div class="exp-img-2" style="background:url(http://placehold.it/255x200) center;background-size: cover;">
-															<span class="filter"></span>
-															<span class="ffs-bs"><label for="op" class="btn btn-small btn-primary">browse photos</label></span>
-															<div class="overlay">
-																<div class="img-counter">23 Photo</div>
-															</div>
-														</div>
-														<div class="item-title">
-															<h4><a href="property_page.html">Prism at Park Avenue South Apar</a></h4>
-															<p class="team-color">525 W 28th St, New York, NY 10001</p>
-															<div class="col-md-7 col-sm-7 col-xs-7">
-																<p>Studio - 2 bd</p>
-															</div>
-															<div class="col-md-5 col-sm-5 col-xs-5">
-																<p>86 m<span class="rank">2</span></p>
-															</div>
-															<div class="col-md-7 col-sm-7 col-xs-7 lft-brd"></div>
-															<div class="col-md-5 col-sm-5 col-xs-5 lft-brd"></div>
-														</div>
-														<hr>
-														<div class="item-title btm-part">
-															<div class="row">
-																<div class="col-md-8 col-sm-8 col-xs-8">
-																	<p>$5,000,000</p>
-																	<p class="team-color">FOR SALE</p>
-																</div>
-																<div class="col-md-4 col-sm-4 col-xs-4 favorite">
-																	<div class="bookmark" data-bookmark-state="empty">
-																		<span class="title-add">Add to bookmark</span>
-																	</div>
-																	<div class="compare" data-compare-state="empty">
-																		<span class="plus-add">Add to compare</span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="row">
-												<div class="col-md-3 col-sm-3 col-xs-6 prop">
-													<div class="wht-cont">
-														<div class="exp-img-2" style="background:url(http://placehold.it/255x200) center;background-size: cover;">
-															<span class="filter"></span>
-															<span class="ffs-bs"><label for="op" class="btn btn-small btn-primary">browse photos</label></span>
-															<div class="overlay">
-																<div class="img-counter">23 Photo</div>
-															</div>
-														</div>
-														<div class="item-title">
-															<h4><a href="property_page.html">AVA High Line 89 - 916 Apartments</a></h4>
-															<p class="team-color">525 W 28th St, New York, NY 10001</p>
-															<div class="col-md-7 col-sm-7 col-xs-7">
-																<p>Studio - 2 bd</p>
-															</div>
-															<div class="col-md-5 col-sm-5 col-xs-5">
-																<p>86 m<span class="rank">2</span></p>
-															</div>
-															<div class="col-md-7 col-sm-7 col-xs-7 lft-brd"></div>
-															<div class="col-md-5 col-sm-5 col-xs-5 lft-brd"></div>
-														</div>
-														<hr>
-														<div class="item-title btm-part">
-															<div class="row">
-																<div class="col-md-8 col-sm-8 col-xs-8">
-																	<p>$5,000,000</p>
-																	<p class="team-color">FOR SALE</p>
-																</div>
-																<div class="col-md-4 col-sm-4 col-xs-4 favorite">
-																	<div class="bookmark" data-bookmark-state="empty">
-																		<span class="title-add">Add to bookmark</span>
-																	</div>
-																	<div class="compare" data-compare-state="empty">
-																		<span class="plus-add">Add to compare</span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-3 col-sm-3 col-xs-6 prop">
-													<div class="wht-cont">
-														<div class="exp-img-2" style="background:url(http://placehold.it/255x200) center;background-size: cover;">
-															<span class="filter"></span>
-															<span class="ffs-bs"><label for="op" class="btn btn-small btn-primary">browse photos</label></span>
-															<div class="overlay">
-																<div class="img-counter">23 Photo</div>
-															</div>
-														</div>
-														<div class="item-title">
-															<h4><a href="property_page.html">Prism at Park Avenue South Apar</a></h4>
-															<p class="team-color">525 W 28th St, New York, NY 10001</p>
-															<div class="col-md-7 col-sm-7 col-xs-7">
-																<p>Studio - 2 bd</p>
-															</div>
-															<div class="col-md-5 col-sm-5 col-xs-5">
-																<p>86 m<span class="rank">2</span></p>
-															</div>
-															<div class="col-md-7 col-sm-7 col-xs-7 lft-brd"></div>
-															<div class="col-md-5 col-sm-5 col-xs-5 lft-brd"></div>
-														</div>
-														<hr>
-														<div class="item-title btm-part">
-															<div class="row">
-																<div class="col-md-8 col-sm-8 col-xs-8">
-																	<p>$5,000,000</p>
-																	<p class="team-color">FOR SALE</p>
-																</div>
-																<div class="col-md-4 col-sm-4 col-xs-4 favorite">
-																	<div class="bookmark" data-bookmark-state="empty">
-																		<span class="title-add">Add to bookmark</span>
-																	</div>
-																	<div class="compare" data-compare-state="empty">
-																		<span class="plus-add">Add to compare</span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-3 col-sm-3 col-xs-6 prop">
-													<div class="wht-cont">
-														<div class="exp-img-2" style="background:url(http://placehold.it/255x200) center;background-size: cover;">
-															<span class="filter"></span>
-															<span class="ffs-bs"><label for="op" class="btn btn-small btn-primary">browse photos</label></span>
-															<div class="overlay">
-																<div class="img-counter">23 Photo</div>
-															</div>
-														</div>
-														<div class="item-title">
-															<h4><a href="property_page.html">Avalon Morningside Park Apartment</a></h4>
-															<p class="team-color">525 W 28th St, New York, NY 10001</p>
-															<div class="col-md-7 col-sm-7 col-xs-7">
-																<p>Studio - 2 bd</p>
-															</div>
-															<div class="col-md-5 col-sm-5 col-xs-5">
-																<p>86 m<span class="rank">2</span></p>
-															</div>
-															<div class="col-md-7 col-sm-7 col-xs-7 lft-brd"></div>
-															<div class="col-md-5 col-sm-5 col-xs-5 lft-brd"></div>
-														</div>
-														<hr>
-														<div class="item-title btm-part">
-															<div class="row">
-																<div class="col-md-8 col-sm-8 col-xs-8">
-																	<p>$5,000,000</p>
-																	<p class="team-color">FOR SALE</p>
-																</div>
-																<div class="col-md-4 col-sm-4 col-xs-4 favorite">
-																	<div class="bookmark" data-bookmark-state="empty">
-																		<span class="title-add">Add to bookmark</span>
-																	</div>
-																	<div class="compare" data-compare-state="empty">
-																		<span class="plus-add">Add to compare</span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-3 col-sm-3 col-xs-6 prop">
-													<div class="wht-cont">
-														<div class="exp-img-2" style="background:url(http://placehold.it/255x200) center;background-size: cover;">
-															<span class="filter"></span>
-															<span class="ffs-bs"><label for="op" class="btn btn-small btn-primary">browse photos</label></span>
-															<div class="overlay">
-																<div class="img-counter">23 Photo</div>
-															</div>
-														</div>
-														<div class="item-title">
-															<h4><a href="property_page.html">Prism at Park Avenue South Apar</a></h4>
-															<p class="team-color">525 W 28th St, New York, NY 10001</p>
-															<div class="col-md-7 col-sm-7 col-xs-7">
-																<p>Studio - 2 bd</p>
-															</div>
-															<div class="col-md-5 col-sm-5 col-xs-5">
-																<p>86 m<span class="rank">2</span></p>
-															</div>
-															<div class="col-md-7 col-sm-7 col-xs-7 lft-brd"></div>
-															<div class="col-md-5 col-sm-5 col-xs-5 lft-brd"></div>
-														</div>
-														<hr>
-														<div class="item-title btm-part">
-															<div class="row">
-																<div class="col-md-8 col-sm-8 col-xs-8">
-																	<p>$5,000,000</p>
-																	<p class="team-color">FOR SALE</p>
-																</div>
-																<div class="col-md-4 col-sm-4 col-xs-4 favorite">
-																	<div class="bookmark" data-bookmark-state="empty">
-																		<span class="title-add">Add to bookmark</span>
-																	</div>
-																	<div class="compare" data-compare-state="empty">
-																		<span class="plus-add">Add to compare</span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- content_2 -->
-									</div>
-								</div>
-								<div class="col-xs-12">
-									<div class="col-md-10 col-md-offset-1 col-xs-12">
-										<nav class="site-navigation paging-navigation navbar">
-											<div class="nav-previous"><a href="#">PREV PAGE</a></div>
-											<ul class="pagination pagination-lg">
-												<li><a href="#">1</a></li>
-												<li><span class="active">2</span></li>
-												<li><a href="#">3</a></li>
-												<li><span class="nav-dots">...</span></li>
-												<li><a href="#">5</a></li>
-											</ul>
-											<div class="nav-next"><a href="#">NEXT PAGE</a></div>
-										</nav>
-									</div>
-								</div>
-							</div>
-							<div id="tab3" class="tab">
-								<div class="col-xs-12 content_2">
-									<div class="col-lg-10 col-lg-offset-1 col-md-12">
-										<!-- Range slider -->
-										<div class="row">
-											<div class="explore col-xs-12">
-												<h2>Properties for sale</h2>
-												<h5 class="team-color col-sm-offset-3 col-sm-6 col-xs-offset-1 col-xs-10">Lorem Ipsum is simply dummy text of the printing and Lorem Ipsum has been the industry's standard </h5>
-											</div>
-												<div class="col-md-2 col-sm-3">
-													<div class="form-inline">
-														<label class="top-indent">Price Range:</label>
-													</div>
-												</div>
-												<div class="col-md-8 col-sm-7">
-													<div class="form-group">
-														<div class="price-range price-range-wrapper"></div>
-													</div>
-												</div>
-												<div class="select-block no-border pull-right col-sm-2 col-xs-12">
-													<select class="selection">
-														<option>Sort By:</option>
-														<option>Date</option>
-														<option>Price</option>
-														<option>Type</option>
-													</select>
-												</div>	<!-- select-block -->
-										</div><!-- row -->
-										<!-- End Range slider -->
-										<div class="wide-2">
-											<div class="row white">
-												<div class="col-md-3 col-sm-3 prp-img">
-													<div class="exp-img-2" style="background:url(http://placehold.it/285x200) center;background-size: cover;">
-														<span class="filter"></span>
-														<span class="ffs-bs"><label for="op" class="btn btn-small btn-primary">browse photos</label></span>
-														<div class="overlay">
-															<div class="img-counter">23 Photo</div>
-														</div>
-													</div>
-												</div>
-												<div class="item-info col-lg-7 col-md-6 col-sm-6">
-													<h4><a href="property_page.html">AVA High Line 89 - 916 Apartments</a></h4>
-													<p class="team-color">525 W 28th St, New York, NY 10001</p>
-													<div class="block">
-														<div class="col-md-3 col-sm-3 col-xs-3 cat-img">
-															<img src="assets/img/bedroom.png" alt="">
-															<p class="info-line">3 Bedrooms</p>
-														</div>
-														<div class="col-md-3 col-sm-3 col-xs-3 cat-img">
-															<img src="assets/img/bathroom.png" alt="">
-															<p class="info-line">1 Bathroom</p>
-														</div>
-														<div class="col-md-3 col-sm-3 col-xs-3 cat-img">
-															<img src="assets/img/square.png" alt="">
-															<p class="info-line">100 m<span class="rank">2</span></p>
-														</div>
-														<div class="col-md-3 col-sm-3 col-xs-3 cat-img">
-															<img src="assets/img/garage.png" alt="">
-															<p class="info-line">1 Garage</p>
-														</div>
-													</div>
-													<div class="col-md-3 col-sm-3 col-xs-3 line"></div>
-													<div class="col-md-3 col-sm-3 col-xs-3 line"></div>
-													<div class="col-md-3 col-sm-3 col-xs-3 line"></div>
-													<div class="col-md-3 col-sm-3 col-xs-3 line"></div>
-													<hr>
-													<p>Aenean quis sem nisi. Aliquam vehicula gravida orci, nec pretium mi ultricies in. Donec fermentum pulvinar mauris neque justo ...</p>
-												</div>
-												<div class="item-price col-lg-2 col-md-3 col-sm-3 col-xs-12">
-													<div class="sum col-sm-12 col-xs-6">
-														<p>$1,000,000</p>
-														<p class="team-color">for rent</p>
-													</div>
-													<span class="ffs-bs col-xs-12 btn-half-wth"><a href="property_page.html" class="btn btn-default btn-small">learn more <i class="fa fa-caret-right"></i></a></span>
-													<div class="sum favorite col-sm-12 col-xs-6">
-														<div class="bookmark col-xs-3" data-bookmark-state="empty">
-															<span class="title-add">Add to bookmark</span>
-														</div>
-														<p class="col-xs-3">Fav</p>
-														<div class="compare col-xs-3" data-compare-state="empty">
-															<span class="plus-add">Add to compare</span>
-														</div>
-														<p class="col-xs-3">Comp</p>
-													</div>
-												</div>
-											</div>
-											<div class="row white">
-												<div class="col-md-3 col-sm-3 prp-img">
-													<div class="exp-img-2" style="background:url(http://placehold.it/285x200) center;background-size: cover;">
-														<span class="filter"></span>
-														<span class="ffs-bs"><label for="op" class="btn btn-small btn-primary">browse photos</label></span>
-														<div class="overlay">
-															<div class="img-counter">23 Photo</div>
-														</div>
-													</div>
-												</div>
-												<div class="item-info col-lg-7 col-md-6 col-sm-6">
-													<h4><a href="property_page.html">AVA High Line 89 - 916 Apartments</a></h4>
-													<p class="team-color">525 W 28th St, New York, NY 10001</p>
-													<div class="block">
-														<div class="col-md-3 col-sm-3 col-xs-3 cat-img">
-															<img src="assets/img/bedroom.png" alt="">
-															<p class="info-line">3 Bedrooms</p>
-														</div>
-														<div class="col-md-3 col-sm-3 col-xs-3 cat-img">
-															<img src="assets/img/bathroom.png" alt="">
-															<p class="info-line">1 Bathroom</p>
-														</div>
-														<div class="col-md-3 col-sm-3 col-xs-3 cat-img">
-															<img src="assets/img/square.png" alt="">
-															<p class="info-line">100 m<span class="rank">2</span></p>
-														</div>
-														<div class="col-md-3 col-sm-3 col-xs-3 cat-img">
-															<img src="assets/img/garage.png" alt="">
-															<p class="info-line">1 Garage</p>
-														</div>
-													</div>
-													<div class="col-md-3 col-sm-3 col-xs-3 line"></div>
-													<div class="col-md-3 col-sm-3 col-xs-3 line"></div>
-													<div class="col-md-3 col-sm-3 col-xs-3 line"></div>
-													<div class="col-md-3 col-sm-3 col-xs-3 line"></div>
-													<hr>
-													<p>Aenean quis sem nisi. Aliquam vehicula gravida orci, nec pretium mi ultricies in. Donec fermentum pulvinar mauris neque justo ...</p>
-												</div>
-												<div class="item-price col-lg-2 col-md-3 col-sm-3 col-xs-12">
-													<div class="sum col-sm-12 col-xs-6">
-														<p>$1,000,000</p>
-														<p class="team-color">for rent</p>
-													</div>
-													<span class="ffs-bs col-xs-12 btn-half-wth"><a href="property_page.html" class="btn btn-default btn-small">learn more <i class="fa fa-caret-right"></i></a></span>
-													<div class="sum favorite col-sm-12 col-xs-6">
-														<div class="bookmark col-xs-3" data-bookmark-state="empty">
-															<span class="title-add">Add to bookmark</span>
-														</div>
-														<p class="col-xs-3">Fav</p>
-														<div class="compare col-xs-3" data-compare-state="empty">
-															<span class="plus-add">Add to compare</span>
-														</div>
-														<p class="col-xs-3">Comp</p>
-													</div>
-												</div>
-											</div>
-											<div class="row white">
-												<div class="col-md-3 col-sm-3 prp-img">
-													<div class="exp-img-2" style="background:url(http://placehold.it/285x200) center;background-size: cover;">
-														<span class="filter"></span>
-														<span class="ffs-bs"><label for="op" class="btn btn-small btn-primary">browse photos</label></span>
-														<div class="overlay">
-															<div class="img-counter">23 Photo</div>
-														</div>
-													</div>
-												</div>
-												<div class="item-info col-lg-7 col-md-6 col-sm-6">
-													<h4><a href="property_page.html">AVA High Line 89 - 916 Apartments</a></h4>
-													<p class="team-color">525 W 28th St, New York, NY 10001</p>
-													<div class="block">
-														<div class="col-md-3 col-sm-3 col-xs-3 cat-img">
-															<img src="assets/img/bedroom.png" alt="">
-															<p class="info-line">3 Bedrooms</p>
-														</div>
-														<div class="col-md-3 col-sm-3 col-xs-3 cat-img">
-															<img src="assets/img/bathroom.png" alt="">
-															<p class="info-line">1 Bathroom</p>
-														</div>
-														<div class="col-md-3 col-sm-3 col-xs-3 cat-img">
-															<img src="assets/img/square.png" alt="">
-															<p class="info-line">100 m<span class="rank">2</span></p>
-														</div>
-														<div class="col-md-3 col-sm-3 col-xs-3 cat-img">
-															<img src="assets/img/garage.png" alt="">
-															<p class="info-line">1 Garage</p>
-														</div>
-													</div>
-													<div class="col-md-3 col-sm-3 col-xs-3 line"></div>
-													<div class="col-md-3 col-sm-3 col-xs-3 line"></div>
-													<div class="col-md-3 col-sm-3 col-xs-3 line"></div>
-													<div class="col-md-3 col-sm-3 col-xs-3 line"></div>
-													<hr>
-													<p>Aenean quis sem nisi. Aliquam vehicula gravida orci, nec pretium mi ultricies in. Donec fermentum pulvinar mauris neque justo ...</p>
-												</div>
-												<div class="item-price col-lg-2 col-md-3 col-sm-3 col-xs-12">
-													<div class="sum col-sm-12 col-xs-6">
-														<p>$1,000,000</p>
-														<p class="team-color">for rent</p>
-													</div>
-													<span class="ffs-bs col-xs-12 btn-half-wth"><a href="property_page.html" class="btn btn-default btn-small">learn more <i class="fa fa-caret-right"></i></a></span>
-													<div class="sum favorite col-sm-12 col-xs-6">
-														<div class="bookmark col-xs-3" data-bookmark-state="empty">
-															<span class="title-add">Add to bookmark</span>
-														</div>
-														<p class="col-xs-3">Fav</p>
-														<div class="compare col-xs-3" data-compare-state="empty">
-															<span class="plus-add">Add to compare</span>
-														</div>
-														<p class="col-xs-3">Comp</p>
-													</div>
-												</div>
-											</div>
-											<div class="row white">
-												<div class="col-md-3 col-sm-3 prp-img">
-													<div class="exp-img-2" style="background:url(http://placehold.it/285x200) center;background-size: cover;">
-														<span class="filter"></span>
-														<span class="ffs-bs"><label for="op" class="btn btn-small btn-primary">browse photos</label></span>
-														<div class="overlay">
-															<div class="img-counter">23 Photo</div>
-														</div>
-													</div>
-												</div>
-												<div class="item-info col-lg-7 col-md-6 col-sm-6">
-													<h4><a href="property_page.html">AVA High Line 89 - 916 Apartments</a></h4>
-													<p class="team-color">525 W 28th St, New York, NY 10001</p>
-													<div class="block">
-														<div class="col-md-3 col-sm-3 col-xs-3 cat-img">
-															<img src="assets/img/bedroom.png" alt="">
-															<p class="info-line">3 Bedrooms</p>
-														</div>
-														<div class="col-md-3 col-sm-3 col-xs-3 cat-img">
-															<img src="assets/img/bathroom.png" alt="">
-															<p class="info-line">1 Bathroom</p>
-														</div>
-														<div class="col-md-3 col-sm-3 col-xs-3 cat-img">
-															<img src="assets/img/square.png" alt="">
-															<p class="info-line">100 m<span class="rank">2</span></p>
-														</div>
-														<div class="col-md-3 col-sm-3 col-xs-3 cat-img">
-															<img src="assets/img/garage.png" alt="">
-															<p class="info-line">1 Garage</p>
-														</div>
-													</div>
-													<div class="col-md-3 col-sm-3 col-xs-3 line"></div>
-													<div class="col-md-3 col-sm-3 col-xs-3 line"></div>
-													<div class="col-md-3 col-sm-3 col-xs-3 line"></div>
-													<div class="col-md-3 col-sm-3 col-xs-3 line"></div>
-													<hr>
-													<p>Aenean quis sem nisi. Aliquam vehicula gravida orci, nec pretium mi ultricies in. Donec fermentum pulvinar mauris neque justo ...</p>
-												</div>
-												<div class="item-price col-lg-2 col-md-3 col-sm-3 col-xs-12">
-													<div class="sum col-sm-12 col-xs-6">
-														<p>$1,000,000</p>
-														<p class="team-color">for rent</p>
-													</div>
-													<span class="ffs-bs col-xs-12 btn-half-wth"><a href="property_page.html" class="btn btn-default btn-small">learn more <i class="fa fa-caret-right"></i></a></span>
-													<div class="sum favorite col-sm-12 col-xs-6">
-														<div class="bookmark col-xs-3" data-bookmark-state="empty">
-															<span class="title-add">Add to bookmark</span>
-														</div>
-														<p class="col-xs-3">Fav</p>
-														<div class="compare col-xs-3" data-compare-state="empty">
-															<span class="plus-add">Add to compare</span>
-														</div>
-														<p class="col-xs-3">Comp</p>
-													</div>
-												</div>
-											</div>
-										</div>	
-										<!-- end wide-2 -->
-									</div>
-								</div>
-								<div class="col-xs-12">
-									<div class="col-md-10 col-md-offset-1 col-xs-12">
-										<nav class="site-navigation paging-navigation navbar">
-											<div class="nav-previous"><a href="#">PREV PAGE</a></div>
-											<ul class="pagination pagination-lg">
-												<li><a href="#">1</a></li>
-												<li><span class="active">2</span></li>
-												<li><a href="#">3</a></li>
-												<li><span class="nav-dots">...</span></li>
-												<li><a href="#">5</a></li>
-											</ul>
-											<div class="nav-next"><a href="#">NEXT PAGE</a></div>
-										</nav>
-									</div>
-								</div>
 							</div>
 						</div><!-- tab-content -->
 					</div><!-- tabs -->
@@ -1049,10 +349,20 @@
 <![endif]-->
 <script>
 
-    search();
+    search(1);
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
 
-    function search() {
+    async function search(page) {
+        document.getElementById("reading_loader").style.display = "block";
+        await sleep(100);
+        document.getElementById("pagination").style.display = "none";
+        document.getElementById("result_content").innerHTML = "";
+
         var address = document.getElementById("address").value;
+        var min_price = document.getElementById("min_price").value;
+        var max_price = document.getElementById("max_price").value;
         var by_agent = document.getElementById("by_agent").checked;
         var by_owner = document.getElementById("by_owner").checked;
         var new_construction = document.getElementById("new_construction").checked;
@@ -1090,11 +400,19 @@
 
         var keywords = document.getElementById("keywords").value;
 
-        document.getElementById("result_content").innerHTML = "";
+
+        price_range = ',';
+        if(min_price !=0 && max_price == 0 ){
+            price_range = min_price+",";
+		}else if(min_price ==0 && max_price != 0 ){
+            price_range = ","+max_price;
+		}
         $.post("/search-result",{
             _token:'{{csrf_token()}}',
             async:false,
+            page:page,
             address:address,
+            price_range:price_range,
             by_agent:by_agent,
             by_owner:by_owner,
             new_construction:new_construction,
@@ -1125,6 +443,8 @@
             keywords:keywords,
         }).success(
             function (data) {
+                document.getElementById("reading_loader").style.display = "none";
+
                 if(data == "" || data== null){
                     return;
 				}
@@ -1137,7 +457,25 @@
                 for(var i = 0; i < data.length; i ++){
                     var row = data[i];
                     var status = row.homeStatus;
-                    status = status.replace("_"," ");
+                    if(status.valueOf('_') != -1){
+                        status = status.replace("_"," ");
+					}
+					var homeType = row.homeType;
+                    if(homeType.valueOf('_') != -1){
+                        homeType = homeType.replace("_"," ");
+					}
+					var bedroom = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+					if(typeof row.bedrooms != "undefined"){
+					    bedroom = row.bedrooms+" beds";
+					}
+                    var bathroom = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+                    if(typeof row.bathrooms != "undefined"){
+                        bathroom = row.bathrooms+" baths";
+                    }
+                    var livingArea = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+                    if(typeof row.livingArea != "undefined"){
+                        livingArea = row.livingArea + " sqft";
+					}
                     htm += "<div class=\"col-md-4 col-sm-6 col-xs-6 prop\">\n" +
                         "<div class=\"wht-cont\">\n" +
                         "<div class=\"exp-img-2\" style=\"background:url("+row.desktopWebHdpImageLink+") center;background-size: cover;\">\n" +
@@ -1147,15 +485,15 @@
                         "</div>\n" +
                         "</div>\n" +
                         "<div class=\"item-title\">\n" +
-                        "<h4><a href=\"property_page.html\">"+row.homeType+"</a></h4>\n" +
+                        "<h4><a href=\"property_page.html\">"+homeType+"</a></h4>\n" +
                         "<p class=\"team-color\">"+row.streetAddress+"</p>\n" +
                         "<p class=\"team-color\">"+row.city+","+row.state+","+row.zipcode+","+row.country+"</p>\n" +
                         "<div class=\"col-md-7 col-sm-7 col-xs-7\">\n" +
-                        "<p>"+row.bedrooms+" beds</p>\n" +
-                        "<p>"+row.bathrooms+" baths</p>\n" +
+                        "<p>"+bedroom+"</p>\n" +
+                        "<p>"+bathroom+"</p>\n" +
                         "</div>\n" +
                         "<div class=\"col-md-5 col-sm-5 col-xs-5\">\n" +
-                        "<p>"+row.livingArea+" sqft</p>\n" +
+                        "<p>"+livingArea+"</p>\n" +
                         "</div>\n" +
                         "<div class=\"col-md-7 col-sm-7 col-xs-7 lft-brd\"></div>\n" +
                         "<div class=\"col-md-5 col-sm-5 col-xs-5 lft-brd\"></div>\n" +
@@ -1180,6 +518,16 @@
                     console.log(data[i]);
 				}
                 result_content.innerHTML = htm;
+                var page_html = "";
+                for (var i = 1; i <= numPage; i ++){
+                    if(i == curPage){
+                        page_html += "<li><span class=\"active\">"+i+"</span></li>";
+					}else{
+                        page_html += "<li><a href=\"#\">"+i+"</a></li>";
+					}
+				}
+                document.getElementById("page_pagination").innerHTML = page_html;
+                document.getElementById("pagination").style.display = "block";
 
 
 

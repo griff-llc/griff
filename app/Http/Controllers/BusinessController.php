@@ -550,18 +550,18 @@ class BusinessController extends Controller{
         if(!Session::get('useremail')) return Redirect('/');
         $params = array(
             'spt' => 'homes',
-            'status' => '',
-            'lt' => '110110',
-            'ht' => '011111',
+            'status' => '000000',
+            'lt' => '000000',
+            'ht' => '000000',
             'pr' => ',',
-            'mp' => '196,489',
-            'bd' => '4',
-            'ba' => '1.5',
-            'sf' => '12,424',
-            'lot' => '5000',
-            'yr' => '1222,2018',
+            'mp' => ',',
+            'bd' => '0,',
+            'ba' => '0',
+            'sf' => ',',
+            'lot' => '0',
+            'yr' => ',',
             'singlestory' => '0',
-            'hoa' => '0,200',
+            'hoa' => '0,',
             'pho' => '0',
             'pets' => '0',
             'parking' => '0',
@@ -578,22 +578,26 @@ class BusinessController extends Controller{
             'att' => '',
             'days' => 'any',
             'ds' => 'all',
-            'pmf' => '1',
-            'pf' => '1',
+            'pmf' => '0',
+            'pf' => '0',
             'sch' => '100111',
-            'zoom' => '13',
+            'zoom' => '12',
             'rect' => '-88283601,42500358,-88206697,42538820',
             'p' => '1',
             'sort' => 'globalrelevanceex',
             'search' => 'maplist',
             'listright' => 'true',
             'isMapSearch' => 'true',
-            'zoom' => '13',
+            'zoom' => '12',
         );
+
+        $params['p'] = $request->input('page');
         $by_agent = '0';
         if ($request->input('by_agent') == 'true'){
             $by_agent = '1';
         }
+
+        $params['pr'] = $request->input('price_range');
         $by_owner = '0';
         if ($request->input('by_owner') == 'true'){
             $by_owner = '1';
@@ -613,7 +617,6 @@ class BusinessController extends Controller{
             $coming_soon = '1';
         }
 
-        $params['lt'] = $by_agent.$by_owner.$foreclosures.$new_construction.'0'.$coming_soon;
 
         if ($request->input('foreclosed') == 'true'){
             $params['pmf'] = '1';
@@ -645,10 +648,11 @@ class BusinessController extends Controller{
         if ($request->input('pending_under') == 'true'){
             $pending_under = '1';
         }
+        $params['lt'] = $by_agent.$by_owner.$foreclosures.$new_construction.$open_houses.$coming_soon;
 
-        $params['status'] = '1'.$make_me_move.$recently_sold.'0'.$for_rent.'1';
+        $params['status'] = '1'.$make_me_move.$recently_sold.'0'.$for_rent.'0';
 
-        $params['lt'] = '11'.$pending_under.'1'.$open_houses.'0';
+        $params['pnd'] = $pending_under;
 
         $houses = '0';
         if ($request->input('houses') == 'true'){
@@ -676,8 +680,8 @@ class BusinessController extends Controller{
         }
         $params['ht'] = $houses.$condos.$apartments.$manufactured.$lots_land.$townhomes;
 
-        $params['bd'] = $request->input('beds');
-        $params['ba'] = $request->input('baths');
+        $params['bd'] = $request->input('beds') . ',';
+        $params['ba'] = $request->input('baths') . ',';
         $square_feet_min = '';
         if($request->has('square_feet_min')){
             $square_feet_min = $request->input('square_feet_min');
@@ -687,7 +691,7 @@ class BusinessController extends Controller{
             $square_feet_max = $request->input('square_feet_max');
         }
         $params['sf'] = $square_feet_min.','.$square_feet_max;
-        $params['lot'] = $request->input('lot_size');
+        $params['lot'] = $request->input('lot_size') . ',';
 
         $year_built_min = '';
         if($request->has('year_built_min')){
@@ -711,22 +715,11 @@ class BusinessController extends Controller{
             $params['att'] = $request->input('keywords');
 
         }
-        $opts = array(
-            'http'=>array(
-                'method'=>"GET",
-                'header'=>"authority: www.zillow.com\r\n" .
-                    "scheme: https\r\n" .
-                    "accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\r\n" .
-                    "upgrade-insecure-requests: 1\r\n" .
-                    "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36\r\n"
-            )
-        );
 
-        $context = stream_context_create($opts);
         $url = 'https://www.zillow.com/search/GetResults.htm?'.http_build_query($params);
 
         $command = 'python scrape.py "'.$url.'"';
-        $answer = shell_exec($command);
+        $answer = exec($command);
         echo $answer;
 
 //        $file = file_get_html($url,false, $context);
