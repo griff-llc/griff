@@ -37,8 +37,6 @@
 ``sudo apt-get install python3-bs4``
 
 
-## Laravel Sponsors
-
-live site : 
+## Live site
 
 http://ec2-18-219-135-252.us-east-2.compute.amazonaws.com
