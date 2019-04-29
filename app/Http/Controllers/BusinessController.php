@@ -721,13 +721,17 @@ class BusinessController extends Controller{
         $command = 'python3 scrape.py "'.$url.'"';
         $answer = exec($command);
         echo $answer;
+    }
 
-//        $file = file_get_html($url,false, $context);
-//
-//        $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
-//        fwrite($myfile, $file);
-//        fclose($myfile);
-//        echo $file;
+    public function houseDetail(Request $request){
+        if(!Session::get('useremail')) return Redirect('/');
 
+        $zpid = $request->input('zpid');
+
+        $command = 'python3 detail.py "'.$zpid.'"';
+        $answer = exec($command);
+        $json_array = json_decode($answer);
+
+        return view('house_detail',['detail'=>$json_array->data]);
     }
 }

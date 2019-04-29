@@ -1,5 +1,6 @@
 import requests
 import json
+import time
 import sys
 url = sys.argv[1]
 #print(url)
@@ -11,12 +12,24 @@ source = requests.get(url, headers=headers).text
 json_array = json.loads(source)
 
 out_json = {}
-out_json["numPages"] = json_array['list']['numPages']
-out_json["curPage"] = json_array['list']['page']
-data_list = []
-for house in json_array['map']['properties']:
-    data_list.append(house[8][11])
-out_json["data"] = data_list
+try:
+    out_json["numPages"] = json_array['list']['numPages']
+    out_json["curPage"] = json_array['list']['page']
+    data_list = []
+    for house in json_array['map']['properties']:
+        data_list.append(house[8][11])
+    out_json["data"] = data_list
+except Exception:
+    time.sleep(0.2)
+    source = requests.get(url, headers=headers).text
+    json_array = json.loads(source)
+    out_json["numPages"] = json_array['list']['numPages']
+    out_json["curPage"] = json_array['list']['page']
+    data_list = []
+    for house in json_array['map']['properties']:
+        data_list.append(house[8][11])
+    out_json["data"] = data_list
+
 
 print(json.dumps(out_json))   
     

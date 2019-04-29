@@ -32,6 +32,9 @@ Route::get('/property-edit',"BusinessController@propertyEdit");
 Route::get('/search',"BusinessController@search");
 Route::post('/search-result',"BusinessController@searchResult");
 
+Route::get('/house-detail',"BusinessController@houseDetail");
+
+
 
 Route::get('/settings',"ManageController@settingsPage")->name('settings');
 Route::post('/change-personal',"ManageController@changePersonal");

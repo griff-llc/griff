@@ -387,12 +387,9 @@
         var open_houses = document.getElementById("open_houses").checked;
         var pending_under = document.getElementById("pending_under").checked;
 
-        var single_family= document.getElementById("single_family").checked;
-        var multi_family = document.getElementById("multi_family").checked;
+        // var single_family= document.getElementById("single_family").checked;
+        // var multi_family = document.getElementById("multi_family").checked;
         var houses = false;
-        if(single_family || multi_family){
-            houses = true;
-		}
         var apartments = document.getElementById("apartments").checked;
         var condos = document.getElementById("condos").checked;
         var townhomes = document.getElementById("townhomes").checked;
@@ -479,12 +476,25 @@
                         status = status.replace("_"," ");
 					}
 					var homeType = row.homeType;
-                    if(single_family == false && homeType == "SINGLE_FAMILY"){
-                        continue;
-					}
-					if(multi_family == false && homeType == "MULTI_FAMILY"){
-                        continue;
-					}
+                    if(single_family && multi_family){
+                        console.log("two");
+                    }else {
+                        if (single_family || multi_family){
+                            if(single_family){
+                                if(homeType != "SINGLE_FAMILY"){
+                                    continue;
+                                }
+                            }
+
+                            if(multi_family){
+                                if (homeType != "MULTI_FAMILY") {
+                                    continue;
+                                }
+                            }
+                        }
+                    }
+
+
                     if(homeType.valueOf('_') != -1){
                         homeType = homeType.replace("_"," ");
 					}
@@ -503,8 +513,8 @@
                     htm += "<div class=\"col-md-4 col-sm-6 col-xs-6 prop\">\n" +
                         "<div class=\"wht-cont\">\n" +
                         "<div class=\"exp-img-2\" style=\"background:url("+row.desktopWebHdpImageLink+") center;background-size: cover;\">\n" +
-                        "<span class=\"filter\"></span>\n" +
-                        "<span class=\"ffs-bs\"><label for=\"op\" class=\"btn btn-small btn-primary\">browse photos</label></span>\n" +
+                        "<span class=\"\"></span>\n" +
+                        "<a onclick='onDetail("+row.zpid+")'><span class='btn btn-small btn-primary'>browse photos</span></a>\n" +
                         "<div class=\"overlay\">\n" +
                         "</div>\n" +
                         "</div>\n" +
@@ -542,6 +552,7 @@
                         "</div>\n" +
                         "</div>\n";
 				}
+
                 result_content.innerHTML = htm;
                 var page_html = "";
                 for (var i = 1; i <= numPage; i ++){
@@ -571,10 +582,13 @@
 
     }
 
-
     function paginate(page) {
         search(page);
 
+    }
+
+    function onDetail(zpid) {
+        window.open("/house-detail?zpid="+zpid);
     }
 
 </script>
