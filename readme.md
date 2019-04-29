@@ -31,8 +31,11 @@
 ``sudo mkdir property``
 
 ## requirements for python module
+
 ``pip install requests``
+
 ``sudo apt-get install python3-bs4``
+
 
 ## Laravel Sponsors
 
