@@ -30,6 +30,19 @@
 
 ``sudo mkdir property``
 
+``sudo chmod 777 -R /var/www/html/public/``
+
+
+## install mysql DB
+
+``mysql -u root -p``
+``use real_state``
+-truncate table
+``drop table property``
+``truncate property``
+
+
+
 ## requirements for python module
 
 ``pip install requests``
