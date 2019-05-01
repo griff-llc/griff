@@ -36,9 +36,13 @@
 ## install mysql DB
 
 ``mysql -u root -p``
+
 ``use real_state``
+
 -truncate table
+
 ``drop table property``
+
 ``truncate property``
 
 
