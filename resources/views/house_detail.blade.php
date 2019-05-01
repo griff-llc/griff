@@ -47,14 +47,14 @@
 						</div>
 						<div id="tab22" class="tab">
 							<!-- Map -->
-							{{--<div id="map4"></div>--}}
+							<div id="map4"></div>
 							<!-- end Map -->
-							<img src="{{$detail->staticMap->sources[2]->url}}" width="100%" height="350px">
+							{{--<img src="{{$detail->staticMap->sources[2]->url}}" width="100%" height="350px">--}}
 						</div>
 						<div id="tab3" class="tab">
-                            <?php $streetview= $detail->streetView ?>
+                            {{--<?php $streetview= $detail->streetView ?>--}}
 
-							<img src="{{$streetview->addressSources[2]->url}}" width="100%" height="350px">
+							{{--<img src="{{$streetview->addressSources[2]->url}}" width="100%" height="350px">--}}
 
 						</div>
 					</div>
@@ -240,7 +240,7 @@
 	<!-- Use this code below only if you are using google street view -->
 	<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initialize&libraries=places"></script> -->
 
-	<script src="https://maps.googleapis.com/maps/api/js?v=3&libraries=places"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&amp;libraries=places&key=AIzaSyBVf0m4pHn-0t4xx-x4dBK9ZzKtT-iSv_o"></script>
 	<script type="text/javascript" src="assets/js/jquery-2.1.4.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="assets/js/jquery-migrate-1.2.1.min.js"></script>
@@ -276,8 +276,9 @@
 
 	//Google map for property page
 	function initialize() {
-		$.getScript("assets/js/locations.js", function() {
-			var latlng = {lat: 51.512707, lng:  -0.130447};
+
+			var latlng = {lat: {{$detail->latitude}}, lng: {{$detail->longitude}}};
+			console.log(latlng);
 			var mapOptions = {
 				center: latlng,
 				zoom: 15
@@ -291,8 +292,8 @@
 				labelClass: "marker-style"
 			});
 			var contentString =   '<div id="mapinfo">'+
-			'<h4 class="firstHeading">St Floor Wingate House</h4>'+
-			'<h6>London, 93-107 Shaftesbury Ave, W1D 5DY</h6>';
+			'<h4 class="firstHeading">{{$detail->address->streetAddress}}</h4>'+
+			'<h6>{{$nearbyHome->address->city}}, {{$nearbyHome->address->state}}, {{$nearbyHome->address->zipcode}}</h6>';
 			var infowindow = new google.maps.InfoWindow({
 				content: contentString
 			});
@@ -306,7 +307,7 @@
 			});
 
 			// Use this code below only if you are using google street view
-			/*	var fenway = {lat: 42.345573, lng: -71.098326};
+			var fenway = {lat: {{$detail->latitude}}, lng: {{$detail->longitude}}};
 			var panorama = new google.maps.StreetViewPanorama(document.getElementById('tab3'), {
 					position: fenway,
 					pov: {
@@ -318,10 +319,9 @@
 			$('.street-view').bind('click', function(e){
 				setTimeout(function() {
 					google.maps.event.trigger(panorama, 'resize');
-				}, 400 ); 
-			});*/
+				}, 400 );
+			});
 
-		});
 	}
 	google.maps.event.addDomListener(window, 'load', initialize);  
 </script>

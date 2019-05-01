@@ -396,7 +396,7 @@
 	<!-- Use this code below only if you are using google street view -->
 	<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initialize&libraries=places"></script> -->
 
-	<script src="https://maps.googleapis.com/maps/api/js?v=3&libraries=places"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&amp;libraries=places&key=AIzaSyBVf0m4pHn-0t4xx-x4dBK9ZzKtT-iSv_o"></script>
 	<script type="text/javascript" src="{{asset('assets/js/jquery-2.1.4.min.js')}}"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="{{asset('assets/js/jquery-migrate-1.2.1.min.js')}}"></script>

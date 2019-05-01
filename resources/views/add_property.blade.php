@@ -118,13 +118,13 @@
 											<div class="col-md-6 col-sm-6 col-xs-12">
 												<div class="form-group">
 													<label for="latitude">Coordinates</label>
-													<input type="text" class="form-control" placeholder="Latitude" id="latitude" readonly>
+													<input type="text" class="form-control" placeholder="Latitude" name="latitude" id="latitude" readonly>
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-6 col-xs-12">
 												<div class="form-group">
 													<label for="longitude">&nbsp;</label>
-													<input type="text" class="form-control" placeholder="Longitude" id="longitude" readonly>
+													<input type="text" class="form-control" placeholder="Longitude" name="longitude" id="longitude" readonly>
 												</div>
 											</div>
 										</div>
@@ -368,7 +368,7 @@
 	</div>
 
 
-	<script src="https://maps.googleapis.com/maps/api/js?v=3&libraries=places"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&amp;libraries=places&key=AIzaSyBVf0m4pHn-0t4xx-x4dBK9ZzKtT-iSv_o"></script>
 	<script type="text/javascript" src="assets/js/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="assets/js/jquery-migrate-1.2.1.min.js"></script>
 	<script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>

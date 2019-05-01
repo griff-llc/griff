@@ -36,9 +36,11 @@
                             <form action="search-result" method="get">
 							<div class="location-map col-sm-4 col-xs-4">
 								<div class="input-group">
-									<input type="text" class="form-control" id="address" name="address" value="@if($property->address){{$property->address}} @elseif($property->neighborhood) {{$property->neighborhood}} @elseif($property->zipcode){{$property->zipcode}} @endif" placeholder="Manhattan, New York">
+									<input type="text" class="form-control" id="address-map" name="address" value="@if($property->address){{$property->address}} @elseif($property->neighborhood) {{$property->neighborhood}} @elseif($property->zipcode){{$property->zipcode}} @endif" placeholder="Manhattan, New York">
 									<i class="fa fa-search" onclick="search(1)"></i>
 								</div>
+                                <div id="submit-map"></div>
+
 							</div>
                             <div class="select-block col-md-2 col-xs-3 last">
                                 <a class="options-button" id="listing-link">Listing Type</a>
@@ -267,6 +269,9 @@
 														<input type="number" id="max_price" min="0" style="border-radius: 10px;" value="{{$property->max_price}}">
 														&nbsp;
 														<button class="btn btn-primary" onclick="search(1)" style="padding: 10px;">Apply</button>
+                                                        <input type="text" class="form-control" placeholder="Latitude" id="latitude" @if($property->latitude) value="{{$property->latitude}}" @endif readonly>
+                                                        <input type="text" class="form-control" placeholder="Longitude" id="longitude" @if($property->longitude) value="{{$property->longitude}}" @endif readonly>
+
 													</div>
 												</div>
 											<div class="col-md-2 col-sm-2"></div>
@@ -321,8 +326,7 @@
 	</div>
 
 	<!-- End Modal login, register, custom gallery -->
-
-	<script src="https://maps.googleapis.com/maps/api/js?v=3&libraries=places"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&amp;libraries=places&key=AIzaSyBVf0m4pHn-0t4xx-x4dBK9ZzKtT-iSv_o"></script>
 	<script type="text/javascript" src="{{asset('assets/js/jquery-2.1.4.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('assets/js/jquery-migrate-1.2.1.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('assets/bootstrap/js/bootstrap.min.js')}}"></script>
@@ -346,12 +350,6 @@
 	<script type="text/javascript" src="{{asset('assets/js/jshashtable-2.1_src.js')}}"></script>
 	<script type="text/javascript" src="{{asset('assets/js/jquery.numberformatter-1.2.3.js')}}"></script>
 
-	<script>
-		// coordinates for current location
-		var _latitude = 40.717857;
-		var _longitude = -73.995042;
-		createHomepageGoogleMap(_latitude,_longitude);
-	</script>
 
 <!--[if gt IE 8]>
 <script type="text/javascript" src="{{asset('assets/js/ie.js')}}"></script>
@@ -369,7 +367,28 @@
         document.getElementById("pagination").style.display = "none";
         document.getElementById("result_content").innerHTML = "";
 
-        var address = document.getElementById("address").value;
+        var lat = document.getElementById("latitude").value;
+        var log = document.getElementById("longitude").value;
+
+        var rect = "";
+
+        if (lat != "" && log != ""){
+            var rect1 = parseFloat(log) - 0.0415215;
+            var rect2 = parseFloat(lat) - 0.0415215;
+            var rect3 = parseFloat(log) + 0.0415215;
+            var rect4 = parseFloat(lat) + 0.0415215;
+            rect1 = Number((rect1).toFixed(6));
+            var str_rect1 = rect1.toString().replace(".","");
+            rect2 = Number((rect2).toFixed(6));
+            var str_rect2 = rect2.toString().replace(".","");
+            rect3 = Number((rect3).toFixed(6));
+            var str_rect3 = rect3.toString().replace(".","");
+            rect4 = Number((rect4).toFixed(6));
+            var str_rect4 = rect4.toString().replace(".","");
+            rect = str_rect1 +"," + str_rect2 + "," + str_rect3 + "," + str_rect4;
+        }
+
+        var address = document.getElementById("address-map").value;
         var min_price = document.getElementById("min_price").value;
         var max_price = document.getElementById("max_price").value;
         var by_agent = document.getElementById("by_agent").checked;
@@ -421,6 +440,7 @@
         $.post("/search-result",{
             _token:'{{csrf_token()}}',
             async:false,
+            rect:rect,
             page:page,
             address:address,
             price_range:price_range,
@@ -454,11 +474,12 @@
             keywords:keywords,
         }).success(
             function (data) {
+                console.log(data);
                 document.getElementById("reading_loader").style.display = "none";
 
-                if(data == "" || data== null){
-                    return;
-				}
+                var longitude = 0.0;
+                var latitude = 0.0;
+                var locations = [];
 
                 var single_family= document.getElementById("single_family").checked;
                 var multi_family = document.getElementById("multi_family").checked;
@@ -468,6 +489,13 @@
                 var curPage = jsondata['curPage'];
                 var numPage = jsondata['numPages'];
                 var data = jsondata['data'];
+                if(data == "" || data== null){
+                    return;
+                }
+                if(data.length == 0){
+                    createHomepageGoogleMap(latitude,longitude,[]);
+                }
+
                 var htm = "";
                 for(var i = 0; i < data.length; i ++){
                     var row = data[i];
@@ -494,10 +522,23 @@
                         }
                     }
 
-
                     if(homeType.valueOf('_') != -1){
                         homeType = homeType.replace("_"," ");
 					}
+
+                    var location = [];
+                    location.push(row.streetAddress);
+                    location.push(row.city+","+row.state+","+row.zipcode);
+                    location.push(row.price + "<br>" + homeType);
+                    location.push(row.latitude);
+                    location.push(row.longitude);
+                    location.push("/house-detail?zpid="+row.zpid);
+                    location.push(row.desktopWebHdpImageLink);
+                    location.push("assets/img/f.svg");
+                    locations.push(location);
+                    latitude += row.latitude;
+                    longitude += row.longitude;
+
 					var bedroom = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 					if(typeof row.bedrooms != "undefined"){
 					    bedroom = row.bedrooms+" beds";
@@ -519,7 +560,7 @@
                         "</div>\n" +
                         "</div>\n" +
                         "<div class=\"item-title\">\n" +
-                        "<h4><a href=\"property_page.html\">"+homeType+"</a></h4>\n" +
+                        "<h4><a>"+homeType+"</a></h4>\n" +
                         "<p class=\"team-color\">"+row.streetAddress+"</p>\n" +
                         "<p class=\"team-color\">"+row.city+","+row.state+","+row.zipcode+","+row.country+"</p>\n" +
                         "<div class=\"col-md-7 col-sm-7 col-xs-7\">\n" +
@@ -553,30 +594,35 @@
                         "</div>\n";
 				}
 
-                result_content.innerHTML = htm;
-                var page_html = "";
-                for (var i = 1; i <= numPage; i ++){
-                    if(i == curPage){
-                        page_html += "<li><span class=\"active\">"+i+"</span></li>";
-					}else{
-                        page_html += "<li><a onclick='paginate("+i+")' style='cursor: pointer'>"+i+"</a></li>";
-					}
-				}
-				if(parseInt(curPage) == 1){
-                    document.getElementById("prev_page").innerHTML = "<a style='cursor: pointer'>PREV PAGE</a>";
-				}else{
-                    var temp = parseInt(curPage) - 1;
-                    document.getElementById("prev_page").innerHTML = "<a onclick='paginate("+temp+")' style='cursor: pointer'>PREV PAGE</a>";
-				}
-                if(parseInt(curPage) == numPage){
-                    document.getElementById("next_page").innerHTML = "<a style='cursor: pointer'>NEXT PAGE</a>";
-                }else{
-                    var temp = parseInt(curPage) + 1;
-                    document.getElementById("next_page").innerHTML = "<a onclick='paginate("+temp+")' style='cursor: pointer'>NEXT PAGE</a>";
-                }
+				latitude = latitude/data.length;
+                longitude = longitude/data.length;
+                createHomepageGoogleMap(latitude,longitude,locations);
 
-                document.getElementById("page_pagination").innerHTML = page_html;
-                document.getElementById("pagination").style.display = "block";
+                result_content.innerHTML = htm;
+
+                // var page_html = "";
+                // for (var i = 1; i <= numPage; i ++){
+                //     if(i == curPage){
+                //         page_html += "<li><span class=\"active\">"+i+"</span></li>";
+					// }else{
+                //         page_html += "<li><a onclick='paginate("+i+")' style='cursor: pointer'>"+i+"</a></li>";
+					// }
+                // }
+                // if(parseInt(curPage) == 1){
+                //     document.getElementById("prev_page").innerHTML = "<a style='cursor: pointer'>PREV PAGE</a>";
+                // }else{
+                //     var temp = parseInt(curPage) - 1;
+                //     document.getElementById("prev_page").innerHTML = "<a onclick='paginate("+temp+")' style='cursor: pointer'>PREV PAGE</a>";
+                // }
+                // if(parseInt(curPage) == numPage){
+                //     document.getElementById("next_page").innerHTML = "<a style='cursor: pointer'>NEXT PAGE</a>";
+                // }else{
+                //     var temp = parseInt(curPage) + 1;
+                //     document.getElementById("next_page").innerHTML = "<a onclick='paginate("+temp+")' style='cursor: pointer'>NEXT PAGE</a>";
+                // }
+                //
+                // document.getElementById("page_pagination").innerHTML = page_html;
+                // document.getElementById("pagination").style.display = "block";
 			}
         );
 
@@ -592,6 +638,75 @@
     }
 
 </script>
+
+    <script>
+        var _latitude = {{$property->latitude}};
+        var _longitude = {{$property->longitude}};
+        google.maps.event.addDomListener(window, 'load', initSubmitMap(_latitude,_longitude));
+        function initSubmitMap(_latitude,_longitude){
+            var mapCenter = new google.maps.LatLng(_latitude,_longitude);
+            var mapOptions = {
+                zoom: 14,
+                center: mapCenter,
+                disableDefaultUI: false
+            };
+            var mapElement = document.getElementById('submit-map');
+            var map = new google.maps.Map(mapElement, mapOptions);
+            var marker = new MarkerWithLabel({
+                position: mapCenter,
+                map: map,
+                icon: 'assets/img/marker-h.png',
+                labelAnchor: new google.maps.Point(50, 0),
+                draggable: true
+            });
+            $('#submit-map').removeClass('fade-map');
+            google.maps.event.addListener(marker, "mouseup", function (event) {
+                var latitude = this.position.lat();
+                var longitude = this.position.lng();
+                $('#latitude').val( this.position.lat() );
+                $('#longitude').val( this.position.lng() );
+
+            });
+
+            //Autocomplete
+            var input = /** @type {HTMLInputElement} */( document.getElementById('address-map') );
+            var autocomplete = new google.maps.places.Autocomplete(input);
+            autocomplete.bindTo('bounds', map);
+            google.maps.event.addListener(autocomplete, 'place_changed', function() {
+                var place = autocomplete.getPlace();
+
+                if (!place.geometry) {
+                    return;
+                }
+                if (place.geometry.viewport) {
+                    map.fitBounds(place.geometry.viewport);
+                } else {
+                    map.setCenter(place.geometry.location);
+                    map.setZoom(15);
+                }
+                marker.setPosition(place.geometry.location);
+                marker.setVisible(true);
+                $('#latitude').val( marker.getPosition().lat() );
+                $('#longitude').val( marker.getPosition().lng() );
+                search(1);
+                var address = '';
+                if (place.address_components) {
+                    address = [
+                        (place.address_components[0] && place.address_components[0].short_name || ''),
+                        (place.address_components[1] && place.address_components[1].short_name || ''),
+                        (place.address_components[2] && place.address_components[2].short_name || '')
+                    ].join(' ');
+                }
+            });
+        }
+        function success(position) {
+            initSubmitMap(position.coords.latitude, position.coords.longitude);
+            $('#latitude').val( position.coords.latitude );
+            $('#longitude').val( position.coords.longitude );
+        }
+
+    </script>
+
 </body>
 </html>
 

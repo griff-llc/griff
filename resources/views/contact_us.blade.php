@@ -78,7 +78,7 @@
 	<div id="register-modal-open"></div>
 	<!-- End Modal login, register, custom gallery -->
 
-	<script src="https://maps.googleapis.com/maps/api/js?v=3&libraries=places"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&amp;libraries=places&key=AIzaSyBVf0m4pHn-0t4xx-x4dBK9ZzKtT-iSv_o"></script>
 	<script type="text/javascript" src="{{asset('assets/js/jquery-2.1.4.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('assets/js/jquery-migrate-1.2.1.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('assets/bootstrap/js/bootstrap.min.js')}}"></script>

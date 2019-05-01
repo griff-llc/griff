@@ -59,6 +59,14 @@ class BusinessController extends Controller{
         if($request->has('address')){
             $data['address'] = $request->input('address');
         }
+
+        if($request->has('latitude')){
+            $data['latitude'] = $request->input('latitude');
+        }
+        if($request->has('longitude')){
+            $data['longitude'] = $request->input('longitude');
+        }
+
         if($request->has('neighborhood')){
             $data['neighborhood'] = $request->input('neighborhood');
         }
@@ -261,6 +269,14 @@ class BusinessController extends Controller{
         if($request->has('address')){
             $data['address'] = $request->input('address');
         }
+        if($request->has('latitude')){
+            $data['latitude'] = $request->input('latitude');
+        }
+        if($request->has('longitude')){
+            $data['longitude'] = $request->input('longitude');
+        }
+
+
         if($request->has('neighborhood')){
             $data['neighborhood'] = $request->input('neighborhood');
         }
@@ -590,6 +606,10 @@ class BusinessController extends Controller{
             'isMapSearch' => 'true',
             'zoom' => '12',
         );
+
+        if($request->has('rect')){
+            $params['rect'] = $request->input('rect');
+        }
 
         $params['p'] = $request->input('page');
         $by_agent = '0';
